@@ -7,534 +7,132 @@
   <meta name="description" content="All UX design projects by Swaraj Kumar — case studies in product design, design systems, and mobile apps." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=ripple10" />
-  <style>
-    .work-card {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      cursor: none;
-      transition: transform 0.5s var(--ease-expo),
-                  box-shadow 0.5s var(--ease-expo),
-                  opacity 0.4s ease;
-    }
-
-    .work-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px var(--border-2);
-    }
-
-    .work-card-thumb {
-      width: 100%;
-      aspect-ratio: 4/3;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-card-bg {
-      position: absolute;
-      inset: 0;
-      transition: transform 0.7s var(--ease-expo);
-    }
-
-    .work-card:hover .work-card-bg { transform: scale(1.05); }
-
-    .work-card-label {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-size: 16px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: -0.02em;
-      z-index: 1;
-    }
-
-    .work-card-hover-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 2;
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-    }
-
-    .work-card:hover .work-card-hover-overlay { opacity: 1; }
-
-    .work-card-hover-cta {
-      font-size: 13px;
-      font-weight: 600;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .work-card-body {
-      padding: 20px 22px 22px;
-    }
-
-    .work-card-num {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .work-card-title {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-
-    .work-card-desc {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 14px;
-    }
-
-    .work-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    /* Case study spotlight */
-    .spotlight {
-      max-width: calc(var(--max-w) + 96px);
-      margin: 0 auto 64px;
-      padding: 0 48px;
-    }
-
-    .spotlight-inner {
-      border-radius: 28px;
-      overflow: hidden;
-      background: linear-gradient(135deg, rgba(162,89,255,0.1) 0%, rgba(77,159,255,0.05) 100%);
-      border: 1px solid rgba(162,89,255,0.2);
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      align-items: center;
-      gap: 0;
-    }
-
-    .spotlight-visual {
-      aspect-ratio: 16/11;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .spotlight-bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #0d001a 0%, #001033 50%, #000d1a 100%);
-    }
-
-    .spotlight-ui {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .spotlight-content {
-      padding: 60px 52px;
-    }
-
-    .spotlight-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .spotlight-label::before {
-      content: '★';
-      font-size: 10px;
-    }
-
-    .spotlight-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 3.5vw, 44px);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 16px;
-    }
-
-    .spotlight-desc {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 32px;
-    }
-
-    .spotlight-meta {
-      display: flex;
-      gap: 32px;
-      margin-bottom: 32px;
-    }
-
-    .spotlight-meta-item {}
-    .spotlight-meta-label {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 4px;
-    }
-
-    .spotlight-meta-value {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    @media (max-width: 768px) {
-      .spotlight-inner { grid-template-columns: 1fr; }
-      .spotlight { padding: 0 24px; }
-      .work-grid { padding: 0 24px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css?v=ig1" />
 </head>
 <body>
 
-  <div id="scroll-progress"></div>
   <div class="cursor-dot"></div>
-  <div class="cursor-ring"></div>
+  <div id="page-veil"></div>
 
-  <!-- ── Navigation ──────────────────────────────────────────── -->
-  <nav>
-    <a href="index.html" class="nav-logo">SK.</a>
-    <ul class="nav-links">
-      <li><a href="index.html#work">Work</a></li>
-      <li><a href="index.html#experience">Experience</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="work.html" class="active">All Projects</a></li>
-      <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
-    </ul>
-  </nav>
+  <header>
+    <div class="frame tl">
+      <a href="index.html">
+        <span class="brand-name">Swaraj Kumar</span>
+        <span class="brand-sub">Senior UX Designer</span>
+      </a>
+    </div>
+    <nav class="frame tr">
+      <a class="hl active" href="work.html">Work</a>
+      <a class="hl" href="index.html#about">About</a>
+      <a class="hl" href="contact.html">Contact</a>
+    </nav>
+    <div class="frame br">
+      <a class="hl" href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </header>
 
-  <!-- ── Page Hero ────────────────────────────────────────────── -->
-  <section class="page-hero">
-    <div class="page-hero-orb"></div>
-    <div class="section-tag reveal">Portfolio</div>
-    <h1 class="page-title reveal delay-1">
-      All <span class="grad-text">Work</span>
-    </h1>
-    <p class="page-sub reveal delay-2">
-      6 projects spanning design systems, mobile apps, and enterprise products.
-    </p>
-  </section>
+  <!-- ── Page head ────────────────────────────────────────── -->
+  <div class="page-head">
+    <h1 class="page-title fade in">All <em>work</em></h1>
+    <p class="page-sub fade in d1">Six projects spanning design systems, mobile apps, enterprise products and research.</p>
+  </div>
 
-  <!-- ── Filters ───────────────────────────────────────────────── -->
-  <div class="work-filters reveal">
-    <button class="filter-btn active" data-filter="all">All Projects</button>
-    <button class="filter-btn" data-filter="design-system">Design Systems</button>
+  <!-- ── Filters ──────────────────────────────────────────── -->
+  <div class="filters fade in d2">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="design-system">Design systems</button>
     <button class="filter-btn" data-filter="mobile">Mobile</button>
-    <button class="filter-btn" data-filter="web">Web & Dashboard</button>
+    <button class="filter-btn" data-filter="web">Web &amp; dashboard</button>
     <button class="filter-btn" data-filter="research">Research</button>
   </div>
 
-  <!-- ── Spotlight (Featured) ─────────────────────────────────── -->
-  <div class="spotlight reveal-scale">
-    <div class="spotlight-inner">
-      <div class="spotlight-visual">
-        <div class="spotlight-bg"></div>
-        <div class="spotlight-ui">
-          <svg width="85%" height="85%" viewBox="0 0 480 320" fill="none">
-            <!-- Design token system visualization -->
-            <rect x="20" y="20" width="440" height="280" rx="16" fill="rgba(162,89,255,0.06)" stroke="rgba(162,89,255,0.15)" stroke-width="1"/>
-            <!-- Color swatches row -->
-            <rect x="40" y="44" width="28" height="28" rx="6" fill="#a259ff"/>
-            <rect x="74" y="44" width="28" height="28" rx="6" fill="#4d9fff"/>
-            <rect x="108" y="44" width="28" height="28" rx="6" fill="#4ade80"/>
-            <rect x="142" y="44" width="28" height="28" rx="6" fill="#fb923c"/>
-            <rect x="176" y="44" width="28" height="28" rx="6" fill="#f43f5e"/>
-            <rect x="210" y="44" width="28" height="28" rx="6" fill="#facc15"/>
-            <!-- Token labels -->
-            <rect x="40" y="80" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <rect x="74" y="80" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <rect x="108" y="80" width="50" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-            <!-- Component previews -->
-            <rect x="40" y="100" width="190" height="32" rx="8" fill="rgba(162,89,255,0.2)" stroke="rgba(162,89,255,0.4)" stroke-width="1"/>
-            <rect x="55" y="112" width="80" height="8" rx="4" fill="rgba(255,255,255,0.4)"/>
-            <rect x="40" y="144" width="80" height="32" rx="8" fill="rgba(77,159,255,0.3)"/>
-            <rect x="130" y="144" width="100" height="32" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-            <!-- Typography scale -->
-            <rect x="250" y="44" width="190" height="250" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-            <rect x="266" y="60" width="120" height="16" rx="4" fill="rgba(255,255,255,0.35)"/>
-            <rect x="266" y="86" width="90" height="12" rx="3" fill="rgba(255,255,255,0.25)"/>
-            <rect x="266" y="108" width="70" height="10" rx="3" fill="rgba(255,255,255,0.2)"/>
-            <rect x="266" y="128" width="55" height="8" rx="3" fill="rgba(255,255,255,0.15)"/>
-            <rect x="266" y="148" width="45" height="6" rx="3" fill="rgba(255,255,255,0.12)"/>
-            <!-- Spacing guide -->
-            <line x1="40" y1="196" x2="230" y2="196" stroke="rgba(162,89,255,0.3)" stroke-width="1" stroke-dasharray="4 4"/>
-            <rect x="40" y="204" width="40" height="40" rx="4" fill="rgba(162,89,255,0.1)" stroke="rgba(162,89,255,0.3)" stroke-width="1"/>
-            <rect x="88" y="208" width="60" height="32" rx="4" fill="rgba(162,89,255,0.1)" stroke="rgba(162,89,255,0.3)" stroke-width="1"/>
-            <rect x="156" y="212" width="74" height="24" rx="4" fill="rgba(162,89,255,0.1)" stroke="rgba(162,89,255,0.3)" stroke-width="1"/>
-          </svg>
-        </div>
-      </div>
-      <div class="spotlight-content">
-        <div class="spotlight-label">Featured Project</div>
-        <h2 class="spotlight-title">Theme Color Tokenization</h2>
-        <p class="spotlight-desc">
-          Built a comprehensive token-based design system for Unisys that enabled consistent theming across all product lines, reducing design inconsistency by 70% and developer handoff time by 40%.
-        </p>
-        <div class="spotlight-meta">
-          <div class="spotlight-meta-item">
-            <div class="spotlight-meta-label">Role</div>
-            <div class="spotlight-meta-value">Lead Designer</div>
-          </div>
-          <div class="spotlight-meta-item">
-            <div class="spotlight-meta-label">Year</div>
-            <div class="spotlight-meta-value">2024</div>
-          </div>
-          <div class="spotlight-meta-item">
-            <div class="spotlight-meta-label">Type</div>
-            <div class="spotlight-meta-value">Enterprise</div>
-          </div>
-        </div>
-        <div class="project-tags" style="margin-bottom:28px">
-          <span class="tag">Design Systems</span>
-          <span class="tag">Figma</span>
-          <span class="tag">Tokens</span>
-          <span class="tag">Enterprise</span>
-        </div>
-        <a href="#" class="btn btn-primary">
-          View Case Study
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Full Work Grid ────────────────────────────────────────── -->
+  <!-- ── Grid ─────────────────────────────────────────────── -->
   <div class="work-grid">
 
-    <!-- BeNeighbor -->
-    <div class="work-card reveal" data-category="mobile">
-      <div class="work-card-thumb">
-        <div class="work-card-bg" style="background: linear-gradient(135deg, #001a0d 0%, #001433 100%);"></div>
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.7;z-index:1" viewBox="0 0 360 270" fill="none">
-          <rect x="110" y="20" width="140" height="240" rx="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <rect x="120" y="50" width="120" height="70" rx="10" fill="rgba(74,222,128,0.15)"/>
-          <rect x="120" y="132" width="55" height="6" rx="3" fill="rgba(255,255,255,0.25)"/>
-          <rect x="120" y="148" width="90" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
-          <rect x="120" y="165" width="120" height="30" rx="15" fill="rgba(74,222,128,0.3)"/>
-          <rect x="120" y="205" width="50" height="30" rx="8" fill="rgba(255,255,255,0.05)"/>
-          <rect x="178" y="205" width="30" height="30" rx="8" fill="rgba(255,255,255,0.05)"/>
-          <rect x="216" y="205" width="24" height="30" rx="8" fill="rgba(74,222,128,0.2)"/>
-        </svg>
-        <div class="work-card-label">BeNeighbor</div>
-        <div class="work-card-hover-overlay">
-          <div class="work-card-hover-cta">
-            View Case Study
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-        </div>
+    <a class="work-card fade" href="#" data-category="design-system">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(70% 100% at 25% 0%, #efedea, transparent 60%),
+          linear-gradient(150deg, #e3e1dd, #d7d5d1);"></div>
+        <div class="piece-num">01</div>
       </div>
-      <div class="work-card-body">
-        <div class="work-card-num">02 — 2023</div>
-        <h3 class="work-card-title">BeNeighbor</h3>
-        <p class="work-card-desc">Community app for connecting neighbours, sharing resources, and organising local events within housing societies.</p>
-        <div class="work-card-tags">
-          <span class="tag">Mobile App</span>
-          <span class="tag">Community</span>
-          <span class="tag">Social UX</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Time Tracker for Gamers -->
-    <div class="work-card reveal delay-1" data-category="mobile">
-      <div class="work-card-thumb">
-        <div class="work-card-bg" style="background: linear-gradient(135deg, #1a0a00 0%, #0d0033 100%);"></div>
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.7;z-index:1" viewBox="0 0 360 270" fill="none">
-          <rect x="60" y="30" width="240" height="210" rx="16" fill="rgba(251,146,60,0.06)" stroke="rgba(251,146,60,0.2)" stroke-width="1"/>
-          <circle cx="180" cy="120" r="60" fill="none" stroke="rgba(251,146,60,0.15)" stroke-width="12"/>
-          <circle cx="180" cy="120" r="60" fill="none" stroke="rgba(251,146,60,0.5)" stroke-width="12" stroke-dasharray="260" stroke-dashoffset="80" stroke-linecap="round"/>
-          <rect x="155" y="112" width="50" height="16" rx="4" fill="rgba(255,255,255,0.3)"/>
-          <rect x="165" y="132" width="30" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
-          <rect x="80" y="200" width="200" height="24" rx="12" fill="rgba(251,146,60,0.15)" stroke="rgba(251,146,60,0.3)" stroke-width="1"/>
-          <rect x="100" y="206" width="80" height="12" rx="4" fill="rgba(251,146,60,0.4)"/>
-        </svg>
-        <div class="work-card-label">Time Tracker</div>
-        <div class="work-card-hover-overlay">
-          <div class="work-card-hover-cta">View Case Study <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-num">03 — 2022</div>
-        <h3 class="work-card-title">Time Tracker for Gamers</h3>
-        <p class="work-card-desc">Playful time management tool encouraging healthy gaming habits through satisfying visuals and gamified goal-setting.</p>
-        <div class="work-card-tags">
-          <span class="tag">Mobile</span>
-          <span class="tag">Gamification</span>
-          <span class="tag">Behavioural UX</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Understanding Colors -->
-    <div class="work-card reveal delay-2" data-category="research">
-      <div class="work-card-thumb">
-        <div class="work-card-bg" style="background: linear-gradient(135deg, #0d0d1a 0%, #000d0d 100%);"></div>
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.8;z-index:1" viewBox="0 0 360 270" fill="none">
-          <!-- Color wheel representation -->
-          <circle cx="180" cy="135" r="80" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-          <path d="M180 55 A80 80 0 0 1 249 95" stroke="#f43f5e" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M249 95 A80 80 0 0 1 249 175" stroke="#fb923c" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M249 175 A80 80 0 0 1 180 215" stroke="#facc15" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M180 215 A80 80 0 0 1 111 175" stroke="#4ade80" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M111 175 A80 80 0 0 1 111 95" stroke="#4d9fff" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <path d="M111 95 A80 80 0 0 1 180 55" stroke="#a259ff" stroke-width="18" stroke-linecap="round" fill="none"/>
-          <circle cx="180" cy="135" r="44" fill="rgba(0,0,0,0.5)"/>
-          <rect x="155" y="127" width="50" height="16" rx="4" fill="rgba(255,255,255,0.2)"/>
-        </svg>
-        <div class="work-card-label">Color Theory</div>
-        <div class="work-card-hover-overlay">
-          <div class="work-card-hover-cta">View Case Study <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-num">04 — 2023</div>
-        <h3 class="work-card-title">Understanding Colors</h3>
-        <p class="work-card-desc">A deep research exploration into colour psychology, accessibility, and how strategic colour choice shapes user perception.</p>
-        <div class="work-card-tags">
-          <span class="tag">Research</span>
-          <span class="tag">Colour Theory</span>
-          <span class="tag">Accessibility</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Notification Panel -->
-    <div class="work-card reveal" data-category="web">
-      <div class="work-card-thumb">
-        <div class="work-card-bg" style="background: linear-gradient(135deg, #001019 0%, #100019 100%);"></div>
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.7;z-index:1" viewBox="0 0 360 270" fill="none">
-          <rect x="80" y="30" width="200" height="210" rx="20" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          <!-- Notification items -->
-          <rect x="96" y="50" width="168" height="2" rx="1" fill="rgba(255,255,255,0.1)"/>
-          <rect x="96" y="65" width="20" height="20" rx="10" fill="rgba(162,89,255,0.4)"/>
-          <rect x="123" y="67" width="100" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
-          <rect x="123" y="79" width="70" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
-          <rect x="96" y="97" width="168" height="1" rx="0.5" fill="rgba(255,255,255,0.06)"/>
-          <rect x="96" y="110" width="20" height="20" rx="10" fill="rgba(77,159,255,0.4)"/>
-          <rect x="123" y="112" width="80" height="6" rx="3" fill="rgba(255,255,255,0.25)"/>
-          <rect x="123" y="124" width="110" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-          <rect x="96" y="142" width="168" height="1" rx="0.5" fill="rgba(255,255,255,0.06)"/>
-          <rect x="96" y="155" width="20" height="20" rx="10" fill="rgba(74,222,128,0.4)"/>
-          <rect x="123" y="157" width="120" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
-          <rect x="123" y="169" width="60" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
-          <rect x="96" y="188" width="100" height="24" rx="12" fill="rgba(162,89,255,0.2)" stroke="rgba(162,89,255,0.3)" stroke-width="1"/>
-          <rect x="204" y="188" width="60" height="24" rx="12" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-        </svg>
-        <div class="work-card-label">Notifications</div>
-        <div class="work-card-hover-overlay">
-          <div class="work-card-hover-cta">View Case Study <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-num">05 — 2022</div>
-        <h3 class="work-card-title">Notification Panel</h3>
-        <p class="work-card-desc">Redesigned a notification system to reduce cognitive load, with smart grouping, priority signals, and clear action hierarchies.</p>
-        <div class="work-card-tags">
-          <span class="tag">UI Design</span>
-          <span class="tag">Interaction</span>
-          <span class="tag">Component</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Complex Canvas -->
-    <div class="work-card reveal delay-1" data-category="web">
-      <div class="work-card-thumb">
-        <div class="work-card-bg" style="background: linear-gradient(135deg, #0a1400 0%, #001430 100%);"></div>
-        <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.6;z-index:1" viewBox="0 0 360 270" fill="none">
-          <!-- Canvas editor mockup -->
-          <rect x="30" y="30" width="300" height="210" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-          <!-- Toolbar left -->
-          <rect x="30" y="30" width="36" height="210" rx="12" fill="rgba(255,255,255,0.04)"/>
-          <circle cx="48" cy="60" r="8" fill="rgba(162,89,255,0.4)"/>
-          <circle cx="48" cy="84" r="8" fill="rgba(255,255,255,0.1)"/>
-          <circle cx="48" cy="108" r="8" fill="rgba(255,255,255,0.1)"/>
-          <circle cx="48" cy="132" r="8" fill="rgba(255,255,255,0.1)"/>
-          <!-- Canvas elements -->
-          <rect x="80" y="50" width="200" height="140" rx="4" fill="rgba(255,255,255,0.02)"/>
-          <rect x="90" y="60" width="90" height="60" rx="8" fill="rgba(77,159,255,0.15)" stroke="rgba(77,159,255,0.25)" stroke-width="1"/>
-          <rect x="190" y="60" width="80" height="35" rx="6" fill="rgba(162,89,255,0.15)" stroke="rgba(162,89,255,0.25)" stroke-width="1"/>
-          <rect x="190" y="103" width="80" height="17" rx="4" fill="rgba(255,255,255,0.06)"/>
-          <rect x="90" y="128" width="180" height="60" rx="8" fill="rgba(74,222,128,0.08)" stroke="rgba(74,222,128,0.15)" stroke-width="1"/>
-          <!-- Properties panel right -->
-          <rect x="294" y="30" width="36" height="210" rx="0" fill="rgba(255,255,255,0.03)"/>
-          <rect x="299" y="48" width="26" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
-          <rect x="299" y="60" width="26" height="8" rx="3" fill="rgba(255,255,255,0.06)"/>
-          <rect x="299" y="74" width="26" height="8" rx="3" fill="rgba(255,255,255,0.06)"/>
-          <rect x="299" y="92" width="26" height="4" rx="2" fill="rgba(162,89,255,0.5)"/>
-        </svg>
-        <div class="work-card-label">Canvas Design</div>
-        <div class="work-card-hover-overlay">
-          <div class="work-card-hover-cta">View Case Study <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        </div>
-      </div>
-      <div class="work-card-body">
-        <div class="work-card-num">06 — 2022</div>
-        <h3 class="work-card-title">Complex Canvas Visual &amp; Functional Design</h3>
-        <p class="work-card-desc">Designed a multi-layered visual editor interface with complex interactions, drag-and-drop behaviour, and contextual tooling for Workik.</p>
-        <div class="work-card-tags">
-          <span class="tag">Web App</span>
-          <span class="tag">Complex UI</span>
-          <span class="tag">B2B</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ── CTA Strip ──────────────────────────────────────────────── -->
-  <div style="text-align:center; padding: 60px 48px; border-top: 1px solid var(--border);">
-    <p class="reveal" style="font-size:18px;color:var(--text-muted);margin-bottom:24px;">Interested in working together?</p>
-    <a href="contact.html" class="btn btn-primary reveal delay-1">
-      Let's talk
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h3 class="wc-title">Theme Color Tokenization</h3>
+      <div class="wc-meta">Design System · Unisys · 2024</div>
+      <p class="wc-desc">Token-based theming across all product lines — design inconsistency down 70%, developer handoff time down 40%.</p>
     </a>
+
+    <a class="work-card fade d1" href="#" data-category="mobile">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(70% 100% at 75% 100%, #eceae6, transparent 60%),
+          linear-gradient(200deg, #dedcd8, #d4d2ce);"></div>
+        <div class="piece-num">02</div>
+      </div>
+      <h3 class="wc-title">BeNeighbor</h3>
+      <div class="wc-meta">Mobile · Community · 2023</div>
+      <p class="wc-desc">Connecting neighbours for resource sharing, local events, and stronger housing societies.</p>
+    </a>
+
+    <a class="work-card fade" href="#" data-category="mobile">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(80% 90% at 50% 0%, #f0eeeb, transparent 55%),
+          linear-gradient(160deg, #e0ded9, #d2d0cc);"></div>
+        <div class="piece-num">03</div>
+      </div>
+      <h3 class="wc-title">Time Tracker for Gamers</h3>
+      <div class="wc-meta">Mobile · Behavioural UX · 2022</div>
+      <p class="wc-desc">Gamified goal-setting that encourages healthy gaming habits.</p>
+    </a>
+
+    <a class="work-card fade d1" href="#" data-category="research">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(70% 90% at 30% 100%, #edebe8, transparent 60%),
+          linear-gradient(140deg, #e1dfdb, #d5d3cf);"></div>
+        <div class="piece-num">04</div>
+      </div>
+      <h3 class="wc-title">Understanding Colors</h3>
+      <div class="wc-meta">Research · Accessibility · 2023</div>
+      <p class="wc-desc">Colour psychology, accessibility, and how strategic colour choice shapes perception.</p>
+    </a>
+
+    <a class="work-card fade" href="#" data-category="web">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(80% 100% at 70% 0%, #efede9, transparent 55%),
+          linear-gradient(170deg, #dfddd9, #d3d1cd);"></div>
+        <div class="piece-num">05</div>
+      </div>
+      <h3 class="wc-title">Notification Panel</h3>
+      <div class="wc-meta">UI · Interaction · 2022</div>
+      <p class="wc-desc">Smart grouping, priority signals and clear action hierarchies to cut cognitive load.</p>
+    </a>
+
+    <a class="work-card fade d1" href="#" data-category="web">
+      <div class="wc-visual">
+        <div class="art" style="background:
+          radial-gradient(70% 90% at 20% 0%, #eeece8, transparent 60%),
+          linear-gradient(190deg, #e2e0dc, #d6d4d0);"></div>
+        <div class="piece-num">06</div>
+      </div>
+      <h3 class="wc-title">Complex Canvas Design</h3>
+      <div class="wc-meta">Web App · B2B · 2022</div>
+      <p class="wc-desc">A multi-layered visual editor with drag-and-drop behaviour and contextual tooling for Workik.</p>
+    </a>
+
   </div>
 
-  <!-- ── Footer ─────────────────────────────────────────────────── -->
   <footer>
-    <div class="footer-logo">SK.</div>
-    <p class="footer-copy">© 2024 Swaraj Kumar. Crafted with intention.</p>
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
+    <span>© 2026 Swaraj Kumar</span>
+    <div class="f-links">
+      <a class="hl" href="index.html">Home</a>
+      <a class="hl" href="work.html">Work</a>
+      <a class="hl" href="contact.html">Contact</a>
     </div>
+    <span>Bangalore, India</span>
   </footer>
 
-  <script src="js/main.js?v=ripple10"></script>
+  <script src="js/main.js?v=ig1"></script>
 </body>
 </html>
