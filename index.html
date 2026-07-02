@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swaraj Kumar — Senior UX Designer @ redBus</title>
+  <meta name="description" content="Senior UX Designer at redBus (MakeMyTrip Group) with 5+ years crafting human-centred digital experiences. Based in Bangalore, India." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css?v=ripple10" />
+</head>
+<body class="loading">
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- ── Preloader ───────────────────────────────────────────── -->
+  <div id="preloader">
+    <div class="preloader-logo">SK</div>
+    <div class="preloader-bar"><div class="preloader-fill"></div></div>
+  </div>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">SK.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="work.html">All Projects</a></li>
+      <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────── -->
+  <section id="hero">
+    <!-- Liquid water-droplet surface (WebGL) -->
+    <canvas id="droplet-canvas" aria-hidden="true"></canvas>
+    <!-- Background -->
+    <div class="hero-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+
+    <div class="hero-content">
+      <!-- Available Badge -->
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Available for new opportunities
+      </div>
+
+      <!-- Main Title -->
+      <h1 class="hero-title">
+        <span class="word" style="animation-delay:2.1s">I</span><span class="space"></span>
+        <span class="word" style="animation-delay:2.22s">design</span><span class="space"></span>
+        <span class="word grad-text" style="animation-delay:2.34s">experiences</span><br/>
+        <span class="word" style="animation-delay:2.46s">people</span><span class="space"></span>
+        <span class="word" style="animation-delay:2.58s">love.</span>
+      </h1>
+
+      <!-- Sub-headline -->
+      <p class="hero-sub">
+        Senior UX Designer at redBus with 5+ years shaping digital products
+        at the intersection of research, empathy&nbsp;&amp;&nbsp;craft.
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <a href="#work" class="btn btn-primary">
+          <span>View my work</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>
+          </svg>
+          <span>View résumé</span>
+        </a>
+        <a href="contact.html" class="btn btn-outline">Get in touch</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="5" data-suffix="+" data-counted="false">0+</div>
+        <div class="hero-stat-label">Years Experience</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="20" data-suffix="+" data-counted="false">0+</div>
+        <div class="hero-stat-label">Projects Shipped</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num" data-target="3" data-suffix="" data-counted="false">0</div>
+        <div class="hero-stat-label">Companies</div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── Marquee ──────────────────────────────────────────────── -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <!-- Repeated twice for seamless loop -->
+      <div class="marquee-item"><span>UX Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Product Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>User Research</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Design Systems</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Prototyping</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Figma</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Interaction Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Usability Testing</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Information Architecture</span><span class="marquee-dot"></span></div>
+      <!-- Duplicate for loop -->
+      <div class="marquee-item"><span>UX Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Product Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>User Research</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Design Systems</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Prototyping</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Figma</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Interaction Design</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Usability Testing</span><span class="marquee-dot"></span></div>
+      <div class="marquee-item"><span>Information Architecture</span><span class="marquee-dot"></span></div>
+    </div>
+  </div>
+
+  <!-- ── Statement ────────────────────────────────────────────── -->
+  <section id="statement">
+    <div class="statement-inner">
+      <div class="reveal-left">
+        <p class="statement-label">
+          Design Philosophy<br/>
+          — Bangalore, India
+        </p>
+      </div>
+      <div class="reveal-right delay-1">
+        <p class="statement-text">
+          Good design isn't just what it looks like —
+          it's the <span class="highlight">feeling</span> it creates,
+          the <span class="highlight">problem</span> it silently solves,
+          and the <span class="highlight">story</span> it whispers to the user.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Featured Work ────────────────────────────────────────── -->
+  <section id="work">
+    <div class="section-header">
+      <div>
+        <div class="section-tag reveal">Selected Work</div>
+        <h2 class="section-title reveal delay-1">Featured<br/><span class="grad-text">Projects</span></h2>
+      </div>
+      <a href="work.html" class="section-link reveal delay-2">
+        View all work
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3.75 9h10.5M9 3.75 14.25 9 9 14.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Featured: Project 1 -->
+      <div class="project-card featured reveal-scale">
+        <div class="project-card-inner">
+          <div class="project-thumb-placeholder">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #1a0533 0%, #0d1a40 50%, #001a26 100%);"></div>
+            <!-- Decorative UI elements -->
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.5" viewBox="0 0 900 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="60" y="60" width="280" height="180" rx="16" fill="rgba(162,89,255,0.15)" stroke="rgba(162,89,255,0.3)" stroke-width="1"/>
+              <rect x="80" y="85" width="120" height="8" rx="4" fill="rgba(255,255,255,0.3)"/>
+              <rect x="80" y="103" width="80" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+              <rect x="80" y="130" width="240" height="40" rx="8" fill="rgba(162,89,255,0.2)"/>
+              <rect x="80" y="180" width="100" height="30" rx="15" fill="rgba(162,89,255,0.4)"/>
+              <rect x="380" y="40" width="480" height="300" rx="20" fill="rgba(77,159,255,0.08)" stroke="rgba(77,159,255,0.2)" stroke-width="1"/>
+              <rect x="400" y="65" width="440" height="32" rx="8" fill="rgba(255,255,255,0.06)"/>
+              <rect x="400" y="109" width="200" height="180" rx="12" fill="rgba(162,89,255,0.12)"/>
+              <rect x="614" y="109" width="226" height="84" rx="12" fill="rgba(77,159,255,0.12)"/>
+              <rect x="614" y="205" width="226" height="84" rx="12" fill="rgba(255,255,255,0.05)"/>
+              <circle cx="750" cy="280" r="3" fill="rgba(162,89,255,0.8)"/>
+              <circle cx="760" cy="280" r="3" fill="rgba(255,255,255,0.2)"/>
+              <circle cx="770" cy="280" r="3" fill="rgba(255,255,255,0.2)"/>
+            </svg>
+            <div class="placeholder-label">Design System</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-view-btn">View Case Study →</div>
+        </div>
+        <div class="project-meta">
+          <div class="project-number">01 — 2024</div>
+          <h3 class="project-name">Theme Color Tokenization</h3>
+          <p class="project-desc">Built an enterprise-scale design token system at Unisys, enabling seamless theme switching and brand consistency across 10+ product surfaces.</p>
+          <div class="project-tags">
+            <span class="tag">Design Systems</span>
+            <span class="tag">Figma</span>
+            <span class="tag">Tokens</span>
+            <span class="tag">Enterprise</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card reveal delay-1">
+        <div class="project-card-inner">
+          <div class="project-thumb-placeholder">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #001a0d 0%, #001433 100%);"></div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.6" viewBox="0 0 480 270" fill="none">
+              <rect x="140" y="30" width="200" height="380" rx="24" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1" transform="translate(0,-80)"/>
+              <rect x="155" y="70" width="170" height="100" rx="12" fill="rgba(74,222,128,0.15)" transform="translate(0,-80)"/>
+              <rect x="155" y="180" width="80" height="8" rx="4" fill="rgba(255,255,255,0.2)" transform="translate(0,-80)"/>
+              <rect x="155" y="198" width="120" height="6" rx="3" fill="rgba(255,255,255,0.1)" transform="translate(0,-80)"/>
+              <rect x="155" y="220" width="170" height="36" rx="18" fill="rgba(74,222,128,0.3)" transform="translate(0,-80)"/>
+            </svg>
+            <div class="placeholder-label">Neighbour App</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-view-btn">View Case Study →</div>
+        </div>
+        <div class="project-meta">
+          <div class="project-number">02 — 2023</div>
+          <h3 class="project-name">BeNeighbor</h3>
+          <p class="project-desc">A community-first app connecting neighbours for resource sharing, local events, and building stronger bonds within housing societies.</p>
+          <div class="project-tags">
+            <span class="tag">Mobile App</span>
+            <span class="tag">Community</span>
+            <span class="tag">Social UX</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card reveal delay-2">
+        <div class="project-card-inner">
+          <div class="project-thumb-placeholder">
+            <div class="placeholder-bg" style="background: linear-gradient(135deg, #1a0a00 0%, #0d0033 100%);"></div>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.6" viewBox="0 0 480 270" fill="none">
+              <rect x="80" y="50" width="320" height="180" rx="16" fill="rgba(251,146,60,0.08)" stroke="rgba(251,146,60,0.2)" stroke-width="1"/>
+              <rect x="100" y="70" width="100" height="60" rx="8" fill="rgba(251,146,60,0.2)"/>
+              <rect x="214" y="70" width="80" height="28" rx="6" fill="rgba(255,255,255,0.06)"/>
+              <rect x="214" y="104" width="50" height="26" rx="6" fill="rgba(255,255,255,0.06)"/>
+              <rect x="100" y="150" width="280" height="6" rx="3" fill="rgba(251,146,60,0.3)"/>
+              <circle cx="240" cy="153" r="8" fill="rgba(251,146,60,0.6)"/>
+              <rect x="160" y="170" width="160" height="30" rx="15" fill="rgba(251,146,60,0.15)" stroke="rgba(251,146,60,0.3)" stroke-width="1"/>
+            </svg>
+            <div class="placeholder-label">Gaming Tracker</div>
+          </div>
+          <div class="project-overlay"></div>
+          <div class="project-view-btn">View Case Study →</div>
+        </div>
+        <div class="project-meta">
+          <div class="project-number">03 — 2022</div>
+          <h3 class="project-name">Time Tracker for Gamers</h3>
+          <p class="project-desc">Designed a playful yet functional time management tool for gamers, balancing motivation with healthy screen-time awareness.</p>
+          <div class="project-tags">
+            <span class="tag">Gaming</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Behavioural UX</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Experience ────────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="experience-inner">
+
+      <!-- Left sticky -->
+      <div class="experience-left reveal-left">
+        <div class="section-tag">Career</div>
+        <h2 class="experience-title">
+          Where I've<br/><span class="grad-text">worked.</span>
+        </h2>
+        <p class="experience-desc">
+          From fast-moving startups to global enterprises — each role shaped how I think about design, systems, and people.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Jul 2024<br/>Present</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">redBus — MakeMyTrip Group</div>
+            <h3 class="timeline-role">Senior UX Designer</h3>
+            <ul class="timeline-bullets">
+              <li>Lead end-to-end UX design for operator and customer-facing features, from wireframes to high-fidelity prototypes</li>
+              <li>Collaborate with product and engineering teams to launch features like route optimization, boarding point management, and seat layout improvements</li>
+              <li>Scaled and maintained the design system — improving component consistency, responsiveness, and implementation quality across platforms</li>
+              <li>Researched operator workflows and designed solutions that improved adoption, usability, and overall service performance</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-1">
+          <div class="timeline-date">Jun 2022<br/>Jun 2024</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Unisys India (Quess Corp)</div>
+            <h3 class="timeline-role">Senior UI/UX Designer</h3>
+            <ul class="timeline-bullets">
+              <li>Applied visual design skills to conceptualise and launch new feature sets</li>
+              <li>Used prototyping to componentize Figma design templates, boosting designer efficiency by 60%</li>
+              <li>Built and scaled an enterprise design system, improving cross-team consistency</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal delay-2">
+          <div class="timeline-date">May 2021<br/>Jun 2022</div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-company">Workik</div>
+            <h3 class="timeline-role">Product Designer</h3>
+            <ul class="timeline-bullets">
+              <li>Structured and executed design projects independently, with strong prioritization to meet deadlines consistently</li>
+              <li>Demonstrated strong self-management, ensuring timely delivery of high-quality work</li>
+              <li>Worked closely with cross-functional teams — engineers, project managers, and QA — to ship high-quality design solutions</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Skills ─────────────────────────────────────────────────── -->
+  <section id="skills">
+    <div class="skills-inner">
+      <div class="skills-header">
+        <div class="section-tag reveal">Expertise</div>
+        <h2 class="skills-title reveal delay-1">Craft &amp;<br/><span class="grad-text">Tools</span></h2>
+        <p class="skills-sub reveal delay-2">The disciplines and tools I rely on to go from insight to impact.</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-category reveal">
+          <div class="skill-cat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+          </div>
+          <h3 class="skill-cat-name">Design</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-label"><span>UI/UX Design</span><span>95%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Design Systems</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Visual Design</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Interaction Design</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal delay-1">
+          <div class="skill-cat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <h3 class="skill-cat-name">Research</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-label"><span>User Research</span><span>85%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="85%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Usability Testing</span><span>80%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="80%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Journey Mapping</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Information Architecture</span><span>82%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-category reveal delay-2">
+          <div class="skill-cat-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3 class="skill-cat-name">Tools</h3>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-label"><span>Figma</span><span>96%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="96%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Claude</span><span>88%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="88%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Cursor</span><span>82%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="82%"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-label"><span>Prototyping</span><span>90%</span></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ──────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="about-inner">
+
+      <div class="about-image-wrap reveal-left">
+        <div class="about-img-placeholder">
+          <div class="about-img-bg"></div>
+          <div class="about-img-initial">SK</div>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">IIT</div>
+          <div class="about-badge-label">Delhi — Design Thinking</div>
+        </div>
+      </div>
+
+      <div class="about-content reveal-right delay-1">
+        <div class="section-tag">About Me</div>
+        <h2 class="about-title">
+          Designer by craft,<br/><span class="grad-text">thinker</span> by nature.
+        </h2>
+        <p class="about-text">
+          I'm Swaraj Kumar, a Senior UX Designer at redBus (MakeMyTrip Group), based in Bangalore, India, with 5+ years of experience creating products that genuinely improve people's lives. I believe great design lives at the crossroads of deep empathy, thoughtful strategy, and pixel-level craft.
+        </p>
+        <p class="about-text">
+          At redBus I lead end-to-end UX for operator and customer-facing features and scale the design system across platforms. Along the way I've built enterprise design systems, shipped B2B products, and obsessed over the smallest interaction details — pairing a design-thinking mindset with an MBA in marketing &amp; analytics.
+        </p>
+
+        <div class="about-edu">
+          <div class="about-edu-title">Education &amp; Certifications</div>
+          <div class="edu-item">
+            <div class="edu-year">2020–22</div>
+            <div class="edu-details">
+              <div class="edu-degree">MBA — Marketing &amp; Analytics (GPA 9.3)</div>
+              <div class="edu-school">Army Institute of Management, Kolkata</div>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2024</div>
+            <div class="edu-details">
+              <div class="edu-degree">Generative AI Fundamentals</div>
+              <div class="edu-school">Google Cloud</div>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-year">2022–23</div>
+            <div class="edu-details">
+              <div class="edu-degree">Design Thinking for UX Designers</div>
+              <div class="edu-school">IIT Delhi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Contact CTA ────────────────────────────────────────────── -->
+  <section id="contact-cta">
+    <div class="cta-orb"></div>
+    <div class="cta-inner">
+      <div class="section-tag reveal" style="justify-content:center">Let's Connect</div>
+      <h2 class="cta-title reveal delay-1">
+        Got an<br/><span class="grad-text">idea?</span>
+      </h2>
+      <p class="cta-sub reveal delay-2">
+        Whether it's a new product, a redesign, or just a design conversation — I'm all ears.
+      </p>
+      <a href="mailto:swaraj.kumar0103@gmail.com" class="cta-email reveal delay-3">
+        swaraj.kumar0103@gmail.com
+      </a>
+      <div class="reveal delay-3">
+        <a href="contact.html" class="btn btn-primary" style="margin:0 auto;width:fit-content;display:inline-flex;">
+          Open Contact Page
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M8 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="cta-socials reveal delay-4">
+        <a href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://www.behance.net/swarajkumar1" target="_blank" rel="noopener" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029L23.726 17zm-5.726-9c-3.032 0-4.02 2.266-4.02 4h8c0-2.2-.942-4-3.98-4z"/></svg>
+          Behance
+        </a>
+        <a href="https://www.instagram.com/theaveragedesignco_?igsh=M2V6ZXpvZ29rMm9s" target="_blank" rel="noopener" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">SK.</div>
+    <p class="footer-copy">© 2024 Swaraj Kumar. Crafted with intention.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=ripple10"></script>
+  <script src="js/droplet.js?v=ripple10"></script>
+  <script src="js/text-ripple.js?v=ripple10"></script>
+</body>
+</html>

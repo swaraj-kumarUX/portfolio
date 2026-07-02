@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Swaraj Kumar</title>
+  <meta name="description" content="Get in touch with Swaraj Kumar for UX design opportunities, collaborations, or just a design conversation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css?v=ripple10" />
+  <style>
+    /* Floating particles background */
+    .contact-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: floatParticle var(--dur) var(--delay) ease-in-out infinite;
+    }
+
+    @keyframes floatParticle {
+      0%   { opacity: 0; transform: translateY(100vh) scale(0); }
+      10%  { opacity: 0.15; }
+      90%  { opacity: 0.08; }
+      100% { opacity: 0; transform: translateY(-100px) scale(1); }
+    }
+
+    /* Contact page specific layout */
+    .contact-page-hero {
+      position: relative;
+      z-index: 1;
+      padding: calc(var(--nav-h) + 80px) 48px 64px;
+      text-align: center;
+    }
+
+    .contact-page-pretitle {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .contact-page-pretitle::before,
+    .contact-page-pretitle::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .contact-page-title {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 9vw, 110px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 24px;
+    }
+
+    .contact-page-sub {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 440px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Contact layout */
+    .contact-main {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 48px 120px;
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Info column */
+    .contact-info-block {
+      position: sticky;
+      top: calc(var(--nav-h) + 40px);
+    }
+
+    .info-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    .info-card:hover {
+      border-color: rgba(162,89,255,0.3);
+    }
+
+    .info-card-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(162,89,255,0.2), rgba(77,159,255,0.1));
+      border: 1px solid rgba(162,89,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .info-card-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .info-card-value {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .info-card-value a {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: opacity 0.3s ease;
+    }
+
+    .info-card-value a:hover { opacity: 0.8; }
+
+    /* Availability card */
+    .avail-card {
+      background: linear-gradient(135deg, rgba(74,222,128,0.08), rgba(74,222,128,0.03));
+      border: 1px solid rgba(74,222,128,0.2);
+      border-radius: 20px;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .avail-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    .avail-text {}
+    .avail-label {
+      font-size: 12px;
+      color: rgba(74,222,128,0.7);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .avail-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Socials */
+    .contact-socials {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-social-btn {
+      flex: 1;
+      min-width: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 12px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.3s ease;
+      cursor: none;
+    }
+
+    .contact-social-btn:hover {
+      border-color: rgba(162,89,255,0.3);
+      background: rgba(162,89,255,0.05);
+      color: var(--text);
+      transform: translateY(-3px);
+    }
+
+    .contact-social-btn svg {
+      width: 22px; height: 22px;
+      opacity: 0.7;
+    }
+
+    /* Form */
+    .contact-form-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+    }
+
+    .form-heading {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .form-subheading {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.5;
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: none;
+      -webkit-appearance: none;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 44px;
+    }
+
+    .form-select option {
+      background: var(--surface);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(162,89,255,0.12);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: var(--text-dim); }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .form-note {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      max-width: 220px;
+    }
+
+    .form-submit {
+      flex-shrink: 0;
+      padding: 14px 36px;
+      border-radius: 100px;
+      border: none;
+      background: var(--grad);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 30px var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-submit:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px var(--glow);
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      padding: 32px;
+    }
+
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 16px;
+      color: #4ade80;
+    }
+
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .success-text {
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 1024px) {
+      .contact-main {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .contact-info-block { position: static; }
+      .contact-socials { flex-direction: row; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-page-hero { padding: calc(var(--nav-h) + 48px) 24px 40px; }
+      .contact-main { padding: 0 24px 80px; }
+      .contact-form-card { padding: 28px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-footer { flex-direction: column; align-items: stretch; }
+      .form-note { max-width: 100%; }
+      .form-submit { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Floating Particles -->
+  <div class="contact-bg" id="particles-bg"></div>
+
+  <!-- ── Navigation ──────────────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">SK.</a>
+    <ul class="nav-links">
+      <li><a href="index.html#work">Work</a></li>
+      <li><a href="index.html#experience">Experience</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="work.html">All Projects</a></li>
+      <li><a href="contact.html" class="nav-cta active">Let's Talk</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Page Hero ────────────────────────────────────────────── -->
+  <div class="contact-page-hero">
+    <p class="contact-page-pretitle reveal">Get in Touch</p>
+    <h1 class="contact-page-title reveal delay-1">
+      Let's build<br/><span class="grad-text">together.</span>
+    </h1>
+    <p class="contact-page-sub reveal delay-2">
+      Whether it's a product redesign, a new idea, or just a good design chat — I'm always up for it.
+    </p>
+  </div>
+
+  <!-- ── Contact Main ──────────────────────────────────────────── -->
+  <div class="contact-main">
+
+    <!-- Left: Info -->
+    <div class="contact-info-block">
+
+      <!-- Availability -->
+      <div class="avail-card reveal">
+        <div class="avail-dot"></div>
+        <div class="avail-text">
+          <div class="avail-label">Currently Available</div>
+          <div class="avail-desc">Open to full-time &amp; freelance roles</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="info-card reveal delay-1">
+        <div class="info-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <div class="info-card-label">Email</div>
+        <div class="info-card-value">
+          <a href="mailto:swaraj.kumar0103@gmail.com">swaraj.kumar0103@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="info-card reveal delay-1">
+        <div class="info-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="info-card-label">Phone</div>
+        <div class="info-card-value">
+          <a href="tel:+918109566547">+91 81095 66547</a>
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="info-card reveal delay-2">
+        <div class="info-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="info-card-label">Location</div>
+        <div class="info-card-value">Bangalore, India<br/><span style="font-size:14px;color:var(--text-muted);font-weight:400">IST (UTC+5:30) · Open to remote</span></div>
+      </div>
+
+      <!-- Response time -->
+      <div class="info-card reveal delay-3">
+        <div class="info-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="info-card-label">Response Time</div>
+        <div class="info-card-value">Usually within 24 hours</div>
+      </div>
+
+      <!-- Socials -->
+      <div class="reveal delay-4">
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener" class="contact-social-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.behance.net/swarajkumar1" target="_blank" rel="noopener" class="contact-social-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 3.211 3.483 3.312 4.588 2.029L23.726 17zm-5.726-9c-3.032 0-4.02 2.266-4.02 4h8c0-2.2-.942-4-3.98-4z"/></svg>
+            Behance
+          </a>
+          <a href="https://www.instagram.com/theaveragedesignco_?igsh=M2V6ZXpvZ29rMm9s" target="_blank" rel="noopener" class="contact-social-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right: Form -->
+    <div class="contact-form-card reveal-right delay-1">
+      <h2 class="form-heading">Send a message</h2>
+      <p class="form-subheading">Tell me about your project and I'll get back to you shortly.</p>
+
+      <form id="contact-form">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Alex Johnson" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="alex@company.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="project-type">What are you looking for?</label>
+          <select class="form-select" id="project-type" name="project-type">
+            <option value="" disabled selected>Select a project type…</option>
+            <option value="full-time">Full-Time Role</option>
+            <option value="freelance">Freelance / Contract</option>
+            <option value="ux-audit">UX Audit</option>
+            <option value="product-design">Product Design</option>
+            <option value="design-system">Design System</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="budget">Budget Range (optional)</label>
+          <select class="form-select" id="budget" name="budget">
+            <option value="" disabled selected>Select a range…</option>
+            <option value="lt-5k">Under ₹5L</option>
+            <option value="5k-15k">₹5L – ₹15L</option>
+            <option value="15k-30k">₹15L – ₹30L</option>
+            <option value="30k+">₹30L+</option>
+            <option value="open">Open to discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Tell me about your project</label>
+          <textarea class="form-textarea" id="message" name="message" placeholder="What problem are you trying to solve? What are your goals and timeline?" required></textarea>
+        </div>
+
+        <div class="form-footer">
+          <p class="form-note">I'll reply within 24 hours. All conversations are confidential.</p>
+          <button type="submit" class="form-submit">
+            Send Message
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-message" id="success-msg">
+        <div class="success-icon" aria-hidden="true"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg></div>
+        <div class="success-title">Message sent!</div>
+        <div class="success-text">Thank you for reaching out. I'll get back to you within 24 hours.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">SK.</div>
+    <p class="footer-copy">© 2024 Swaraj Kumar. Crafted with intention.</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="js/main.js?v=ripple10"></script>
+  <script>
+    // Generate floating particles
+    const particlesBg = document.getElementById('particles-bg');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 4 + 2;
+      p.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${Math.random() * 100}%;
+        --dur: ${Math.random() * 12 + 10}s;
+        --delay: ${Math.random() * -15}s;
+      `;
+      particlesBg.appendChild(p);
+    }
+
+    // Enhanced form handler for contact page
+    const contactForm = document.getElementById('contact-form');
+    const successMsg  = document.getElementById('success-msg');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = contactForm.querySelector('.form-submit');
+        btn.innerHTML = 'Sending… <span>⏳</span>';
+        btn.style.opacity = '0.7';
+
+        setTimeout(() => {
+          contactForm.style.display = 'none';
+          successMsg.style.display  = 'block';
+        }, 1200);
+      });
+    }
+  </script>
+</body>
+</html>
