@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+
+# Tooling
+.claude/
+
+# Working docs — kept on disk, deliberately not published
+HANDOFF.md
+case-studies/ota-reconciliation-draft.md
+rpw-case-study-content 2/
+
+# Superseded "plaster" theme. No page references these; they remain in git
+# history (commit 62445af) and on disk, just untracked from here on.
+css/style.css
+js/main.js
+js/relief.js
+
+# Exports not served by any page
+case-studies/Work.png
+case-studies/Experience.png
+case-studies/Bilta.png
+case-studies/Unisys.png
+case-studies/Workik.png
+case-studies/redbus.png
+case-studies/assets/Work.png
+case-studies/assets/Home.png
+case-studies/assets/Frame 9.png
+case-studies/assets/Frame 10.png
+case-studies/assets/ota-reconciliation/operator interview.png
+case-studies/assets/ota-reconciliation/Escalation status invoice.png
+case-studies/assets/ota-reconciliation/File upliad.png
+case-studies/assets/ota-reconciliation/Gaadikharcha inage flow.png
+case-studies/assets/ota-reconciliation/Invocie deductions.png
+case-studies/assets/ota-reconciliation/Invocie deductiosn 2.png
+case-studies/assets/ota-reconciliation/Popup - PNR details.png
+case-studies/assets/ota-reconciliation/V1-V2.png
