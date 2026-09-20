@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HubbleUI Design System — Swaraj Kumar</title>
+  <meta name="description" content="Rebuilding PARTICLES' color foundation, fixing a real shipped accessibility bug during component migration, and building the AI-powered Figma plugin that keeps it from drifting again." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+</head>
+<body>
+
+  <nav class="ns-nav">
+    <a class="ns-brand" href="../index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
+    <div class="ns-nav-links">
+      <a href="../work.html" class="active">Work</a>
+      <a href="../index.html#about">About</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <header class="ns-hero">
+    <span class="ns-eyebrow">Case study · redBus / redPro</span>
+    <div class="ns-hero-grid">
+      <div>
+        <h1 class="ns-title">HubbleUI Design System</h1>
+        <p class="ns-dek">PARTICLES looked like a design system. Nothing in production actually used it. I rebuilt its color foundation from measured, provable drift — then migrated redPro's first real component onto it, found a shipped accessibility bug on the way, and built the tooling to stop the drift from ever coming back unwatched.</p>
+      </div>
+    </div>
+
+    <div class="ns-meta">
+      <div class="ns-meta-item"><span class="ns-meta-label">Role</span><span class="ns-meta-val">Token architecture owner &amp; migration lead, sole plugin builder</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">System</span><span class="ns-meta-val">PARTICLES (tokens) · CLUSTERS (components)</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Scope</span><span class="ns-meta-val">Color engineering · WCAG remediation · component migration · Figma plugin</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Migrated</span><span class="ns-meta-val">Buttons — component 1 of 28</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Status</span><span class="ns-meta-val">Live, in active use on redPro</span></div>
+    </div>
+
+    <div class="ns-hero-art" aria-hidden="true">
+      <svg viewBox="0 0 240 200" fill="none">
+        <circle cx="80" cy="100" r="62" stroke="rgba(255,255,255,0.08)" stroke-width="26"/>
+        <circle cx="80" cy="100" r="62" stroke="#5FA8E0" stroke-width="26" stroke-dasharray="200 390" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#E0625A" stroke-width="26" stroke-dasharray="55 390" stroke-dashoffset="-200" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#5FC98A" stroke-width="26" stroke-dasharray="55 390" stroke-dashoffset="-255" stroke-linecap="round"/>
+        <circle cx="176" cy="60" r="30" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+        <circle cx="176" cy="60" r="30" stroke="#E8A33D" stroke-width="14" stroke-dasharray="90 188" stroke-linecap="round"/>
+        <circle cx="196" cy="150" r="18" stroke="rgba(255,255,255,0.08)" stroke-width="9"/>
+        <circle cx="196" cy="150" r="18" stroke="#35C2AC" stroke-width="9" stroke-dasharray="45 113" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ── Objective ────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Objective</span></div>
+      <div class="ns-copy">
+        <p>Rebuild PARTICLES' color foundation into something engineers and designers could actually trust — provably, not just aesthetically — then prove it by migrating a real, shipped component onto it. A token file that's well-organized on paper but disconnected from production doesn't help anyone. And a fix that only holds until the next deadline doesn't either — which is why this work ends in tooling, not just a cleaner file.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The problem ──────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">The problem</span><h2 class="ns-h2">Three compounding issues</h2></div>
+      <div class="ns-copy">
+        <p>PARTICLES existed. It wasn't trustworthy.</p>
+      </div>
+    </div>
+
+    <div class="ns-grid4">
+      <div class="ns-tile"><div class="ns-tile-num">01</div><h4>The colors drifted</h4><p>Pasted in over time from different sources rather than engineered. The brand blue wandered between 213° and 223° across its own scale — "blue-100" and "blue-500" weren't the same blue, just lighter and darker versions of visibly different ones.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">02</div><h4>Accessibility failed</h4><p>Success, warning and error text — used constantly in a data-dense B2B tool — sat at 3.9–4.3:1 contrast. WCAG AA requires 4.5:1. Real users with low vision couldn't reliably read status messages.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">03</div><h4>Production wasn't even connected</h4><p>The deeper discovery: live components — real buttons, badges, inputs on shipped screens — were bound to a <em>third</em>, older system with 151+ legacy variable names. PARTICLES was a well-organized file nothing in production depended on.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Process ──────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 01</span><h2 class="ns-h2">Audit before engineering</h2></div>
+      <div class="ns-copy">
+        <p>Rather than guessing at fixes, I audited every family's hue, saturation and lightness numerically — plotting each on a hue wheel to make drift visible instead of eyeballing hex codes. That turns "these colors look a bit off" into a provable finding: <em>blue-800 sits at 2° hue while the rest of the family sits at 8–10°</em> is a fixable fact. "This looks slightly wrong" is not.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure medium">
+      <div class="ns-shot"><img src="assets/hubbleui/greyscale%20.png" alt="Gray scale audit dashboard — hue wheel, lightness ladder, and step-size chart comparing the first version to the final" /></div>
+      <figcaption>The actual audit: hue plotted on a wheel (drift visible as scattered dots vs. one tight cluster), a lightness ladder per stop, and the step size between each — the old ramp jumps 4, 4, 4, 7, 0, −1, 10, 12, 19, 18, 10; the new one rises cleanly 4→6→8→10→12→14→15→16.</figcaption>
+    </figure>
+  </section>
+
+  <section class="ns-section tight">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 02</span><h2 class="ns-h2">Engineer the gray scale from scratch</h2></div>
+      <div class="ns-copy">
+        <p>Grays are the hardest-working color in any interface, and the most tolerant of getting quietly wrong. I rebuilt the neutral ramp from <strong>12 scattered values</strong> into <strong>9 engineered stops</strong>: a single locked 216° cool undertone to harmonize with the brand blue, and lightness steps that rise unevenly — 4 → 6 → 8 → 10 → 12 → 14 → 15 → 16% — rather than a flat progression, because human vision compresses differences in dark tones more than light ones. <code>gray-0</code> stayed deliberately pure white, since true white is still needed for elevated surfaces and inverse text — a case where forcing perfect uniformity would have been the wrong call.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure medium">
+      <div class="ns-shot"><img src="assets/hubbleui/Greys.png" alt="Old and new gray scale mapped to their actual UI roles — page background, row hover, disabled text, primary text, and so on" /></div>
+      <figcaption>Every stop tied to what it actually does in the product — not just a ramp of squares. Old gray-300/400/500 were three near-identical UI roles sharing one indistinguishable gray; the rebuilt scale gives each its own step.</figcaption>
+    </figure>
+
+    <figure class="ns-figure medium">
+      <div class="ns-shot"><img src="assets/hubbleui/greys%20before%20and%20after%20.png" alt="Gray scale before and after — hex values and lightness percentages side by side, with the three near-duplicate stops highlighted" /></div>
+      <figcaption>The specific proof: gray-300, gray-400 and gray-500 were all ~81% lightness in the old scale — functionally one color wearing three names. In the rebuilt scale they're 80%, 71% and 61% — three clean, distinct steps.</figcaption>
+    </figure>
+  </section>
+
+  <section class="ns-section tight">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 03</span><h2 class="ns-h2">Lock hue — without erasing character</h2></div>
+      <div class="ns-copy">
+        <p>Every chromatic family got locked to one mathematically precise hue — no more drift lightest to darkest. But I prototyped a fully "normalized" version too, where every family shared identical saturation and evenly-stepped lightness, and rejected it.</p>
+      </div>
+    </div>
+    <div class="ns-callout">
+      <div class="ns-callout-label">The judgment call</div>
+      <p>The normalized version produced an acidic green, muddy dark ambers, and would have shifted the protected brand blue to a more saturated, less calm color. <strong>Hue consistency was worth enforcing everywhere; saturation and lightness needed to stay hand-tuned per family</strong> — that's what reads as designed rather than generated. Knowing which axis to standardize and which to leave alone was the real work here, not running a formula.</p>
+    </div>
+
+    <figure class="ns-figure scrollx">
+      <div class="ns-shot"><img src="assets/hubbleui/All%20colors.png" alt="The full upgraded color system — blue, gray, green, red, amber, turquoise, golden yellow, violet, and the two deliberate brand exceptions" /></div>
+      <figcaption>The same rebuild applied across every family — including the two deliberate exceptions, blue-primo and red-brand, held apart from their scales on purpose.</figcaption>
+    </figure>
+  </section>
+
+  <section class="ns-section tight">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 04</span><h2 class="ns-h2">Fix accessibility as engineering, not polish</h2></div>
+      <div class="ns-copy">
+        <p>The three failing feedback colors each needed a specific, calculated darkening — not a guess. I computed exactly how far each needed to move to clear 4.5:1 against its real background, then applied the minimum change needed: 2–3% lightness, visually almost imperceptible, but the difference between passing and failing AA. I folded each fix directly into the color's primary token rather than adding parallel "-600" variants — keeping the system lean instead of accumulating near-duplicate tokens to patch one problem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Color swatches ───────────────────────────────────── -->
+  <section class="ns-section tight">
+    <div class="ns-tokens">
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#315ED1"></div><div class="ns-swatch-meta"><div class="name">blue-500 · brand</div><div class="hex">#315ED1</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#1F252E"></div><div class="ns-swatch-meta"><div class="name">gray-700 · text</div><div class="hex">#1F252E</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#D32B11"></div><div class="ns-swatch-meta"><div class="name">red-500 · error</div><div class="hex">#D32B11</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#1B8040"></div><div class="ns-swatch-meta"><div class="name">green-500 · success</div><div class="hex">#1B8040</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#A26100"></div><div class="ns-swatch-meta"><div class="name">amber-800 · warning</div><div class="hex">#A26100</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#0098EE"></div><div class="ns-swatch-meta"><div class="name">turquoise-500 · info</div><div class="hex">#0098EE</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── Component migration: the bug ─────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 05</span><h2 class="ns-h2">Migrating Buttons — and finding the real bug</h2></div>
+      <div class="ns-copy">
+        <p>With the token foundation solid, I migrated Buttons — the first of 28 components — off the legacy system. This is where the deeper value showed up.</p>
+        <p>While mapping Buttons' legacy variables to PARTICLES tokens, I found a real, shipped accessibility bug: the button's <strong>Disabled + Hover</strong> state rendered white text on a light gray background — essentially invisible. Tracing why revealed the actual root cause: <code>Disabled</code> had been modeled as a value inside the button's color-intent axis, alongside "Active" and "Destructive" — which meant it got crossed against every hover and pressed state, combinations that should never have existed, since a disabled element can't be meaningfully hovered.</p>
+      </div>
+    </div>
+
+    <div class="ns-callout">
+      <div class="ns-callout-label">Symptom vs. defect</div>
+      <p>The fix wasn't just correcting that one instance of white-on-gray text — it was <strong>restructuring the variant architecture</strong> so <code>Disabled</code> became a state, orthogonal to color intent, matching how Material Design and Adobe Spectrum model it. That single structural change made the entire bug class structurally impossible to reintroduce, rather than patched once.</p>
+    </div>
+
+    <div class="ns-row" style="margin-top:36px;">
+      <div></div>
+      <div class="ns-copy">
+        <p>The same pass caught that "Tertiary" — meant to be the lowest-emphasis button style — was visually almost identical to "Secondary," both bordered and opaque. I made Tertiary borderless and transparent at rest, consistent with how text buttons work industry-wide, giving designers an actual third tier of emphasis instead of two options that looked the same.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process infrastructure ────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process · 06</span><h2 class="ns-h2">Building the process, not just the fix</h2></div>
+      <div class="ns-copy">
+        <p>Migrating one component well is useful once. I built infrastructure to do it repeatably: a standardized 5-section documentation template per component — <strong>Use When · Do Not Use · Variant Map · Token List · Anti-Substitutions</strong> — where that last section explicitly encodes mistakes already found, so they can't quietly recur. Plus a running backlog capturing every deferred decision, so nothing gets silently dropped as the migration continues across the remaining 27 components.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Impact table ─────────────────────────────────────── -->
+  <section class="ns-section tight">
+    <table class="ns-table">
+      <thead><tr><th>Area</th><th>Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td>Hue consistency</td><td>Drifting 3–10° across stops</td><td class="pass">Locked, mathematically verified</td></tr>
+        <tr><td>Gray scale</td><td>12 scattered values</td><td class="pass">9 engineered stops, even perceptual steps</td></tr>
+        <tr><td>WCAG text contrast</td><td>3.9–4.3:1 (failing)</td><td class="pass">4.5–4.7:1 (passing)</td></tr>
+        <tr><td>Components on governed tokens</td><td>0 of 28</td><td class="pass">1 migrated, documented, templated</td></tr>
+        <tr><td>Known a11y bugs in production</td><td>1 found — invisible disabled-state text</td><td class="pass">Fixed; the architecture that caused it corrected</td></tr>
+        <tr><td>Documentation</td><td>None</td><td class="pass">Living component registry + backlog</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Reflection pull quote ─────────────────────────────── -->
+  <div class="ns-pullquote">
+    <p>The real work was learning which inconsistencies were bugs, and which were legitimate design decisions dressed up as inconsistencies.</p>
+    <cite>Uniform hue was a bug. Uniform saturation across five different families was not — enforcing it anyway would have made the system worse while looking more "consistent" on paper.</cite>
+  </div>
+
+  <section class="ns-section tight">
+    <div class="ns-row">
+      <div></div>
+      <div class="ns-copy">
+        <p>The component migration reinforced the same lesson structurally: the visible symptom (invisible text) and the actual defect (a badly-modeled variant axis) were two different things. Fixing only the symptom would have left the system able to produce the same failure the next time someone added a state. Fixing the axis meant it couldn't.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pivot to tooling ─────────────────────────────────── -->
+  <div class="ns-pullquote">
+    <p>A rebuilt, correct system still drifts the moment nobody's watching. So I built the thing that watches.</p>
+    <cite>Why the fix couldn't end at component 1 of 28</cite>
+  </div>
+
+  <!-- ── The plugin ───────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Act two · the tool</span><h2 class="ns-h2">HubbleUI Design Assistant</h2></div>
+      <div class="ns-copy">
+        <p>Auditing 27 more components by hand doesn't scale, and neither does trusting every future PR to remember the fixes above. So I designed and built a Figma plugin myself — ES5-compatible JavaScript running inside Figma's plugin sandbox, with its own UI, its own scoring logic, and a direct connection to Claude for the one check that needs a real eye. Four features, each closing a different way drift actually happens:</p>
+      </div>
+    </div>
+
+    <div class="ns-grid4">
+      <div class="ns-tile"><div class="ns-tile-num">01</div><h4>Audit + auto-fix</h4><p>Scans fills, strokes, radius, spacing and type against the token scale. Off-system values get a severity, a plain-language reason, and the nearest token — found by colour-distance matching, not a guess.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">02</div><h4>Adoption Score</h4><p>One number, five weighted dimensions: component coverage, token coverage, detachment, variant configuration, naming. Turns "is this on-system?" into something a lead can track over time.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">03</div><h4>Detached Instance Detector</h4><p>Finds three distinct kinds of drift: fully <strong>detached</strong> layers rebuilt from scratch, <strong>broken</strong> links to a deleted component, and instances still linked but <strong>overridden</strong> — each override tagged token-bound or uncontrolled.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">04</div><h4>DAT — AI fidelity check</h4><p>Upload a developer-build screenshot next to the Figma design; Claude compares them across colour, type, spacing, components and layout, and returns a scored, structured report.</p></div>
+    </div>
+  </section>
+
+  <section class="ns-section tight">
+    <figure class="ns-figure narrow">
+      <div class="ns-shot"><img src="assets/hubbleui/plugin-audit.png" alt="HubbleUI Design Assistant — Audit tab, showing off-token issues with severity and suggested fixes" /></div>
+      <figcaption>The Audit tab, live — each issue names the property, the value, and the nearest token, so fixing it doesn't require opening the token doc.</figcaption>
+    </figure>
+  </section>
+
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Systems thinking</span><h2 class="ns-h2">Turning "on-system?" into a number</h2></div>
+      <div class="ns-copy">
+        <p>A pass/fail audit tells you what's wrong on one frame. It doesn't tell a design lead whether adoption is improving file over file. The Adoption Score is a heuristic I designed to answer that — five dimensions, weighted by how much each actually signals real adoption rather than surface compliance:</p>
+        <ul>
+          <li><strong>Component coverage (35%)</strong> — the largest weight, because using real components is the strongest signal of adoption.</li>
+          <li><strong>Token coverage (30%)</strong> — style checks that resolve to a token.</li>
+          <li><strong>Detachment, inverse (15%)</strong> — penalises frames named like a component that aren't actually linked to one.</li>
+          <li><strong>Variant configuration (10%)</strong> — instances with explicit component properties set, not left default.</li>
+          <li><strong>Naming compliance (10%)</strong> — smallest weight deliberately: naming matters for handoff, but it's cosmetic next to whether the system is actually being used.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="ns-figure narrow">
+      <div class="ns-shot"><img src="assets/hubbleui/plugin-adoption.png" alt="HubbleUI Design Assistant — Adoption Score tab, showing a weighted breakdown across five dimensions" /></div>
+      <figcaption>A live scan — the ring is the headline number; the bars are where a lead actually finds the next fix.</figcaption>
+    </figure>
+  </section>
+
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Drift detection</span><h2 class="ns-h2">The drift an audit alone can't see</h2></div>
+      <div class="ns-copy">
+        <p>Off-token values are the obvious failure mode. The quieter one: a component instance still technically "linked" to CLUSTERS but locally overridden — a fill swapped, a radius nudged — looking compliant in a file search while it's silently forked from the system. The Detector separates that from full detachment (no link at all) and broken links (the source component is gone), and tags every override as either <em>token-bound</em> or <em>uncontrolled</em>.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure narrow">
+      <div class="ns-shot"><img src="assets/hubbleui/plugin-detach.png" alt="HubbleUI Design Assistant — Detach tab, showing detached, broken-link, and overridden component instances" /></div>
+      <figcaption>Three failure modes, not one — a "linked" instance can still be quietly wrong. This is exactly the class of bug that slipped through on Buttons before the migration.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── DAT prompt ───────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">AI review</span><h2 class="ns-h2">Writing the rubric, not just calling the API</h2></div>
+      <div class="ns-copy">
+        <p>The DAT check sends both images to Claude with a fixed rubric — I wrote this prompt to force structured, comparable output every time, instead of a free-text opinion that reads differently on every run.</p>
+      </div>
+    </div>
+
+    <div class="ns-code">
+      <div class="ns-code-head"><span class="dot"></span> DAT reviewer prompt</div>
+      <pre>You are a Design Acceptance Test (DAT) reviewer. The FIRST image is
+the DEVELOPER-built screen. The SECOND image is the FIGMA DESIGN
+(source of truth).
+
+Compare them and identify visual mismatches across: <span class="hl">colours,
+typography, spacing, component usage, icons, layout/alignment,
+and missing elements.</span>
+
+Respond ONLY with a valid JSON object — no markdown, no backticks:
+{"summary":{"total":N,"critical":N,"major":N,"minor":N,"score":N},
+ "issues":[{"id":N,"title":"...","severity":"critical|major|minor",
+ "category":"colour|typography|spacing|component|icon|layout|missing",
+ "description":"what is wrong","fix":"what the dev should change"}]}
+
+Score is 0-100 (100 = pixel perfect). Be specific and actionable.</pre>
+    </div>
+  </section>
+
+  <!-- ── Caught in own tool ────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Reflection</span><h2 class="ns-h2">What I caught in my own tool</h2></div>
+      <div class="ns-copy">
+        <p>The first version of the Audit only checked whether a value <em>matched</em> a token — a fill that happened to be <code>#315ED1</code> passed, whether or not it was bound to the <code>brand/primary</code> variable. The moment the token changes, an unbound-but-matching value doesn't follow it, and silently drifts.</p>
+        <p>Fixing it meant reading Figma's Variables API properly — <code>getBoundVarName()</code> checks whether a property is genuinely linked to a live variable, not just numerically equal to one right now. It's a small function, and it's the difference between a checker that looks rigorous and one that actually is.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Outcome ──────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Outcome</span><h2 class="ns-h2">A corrected foundation, enforced at the source</h2></div>
+      <div class="ns-copy">
+        <p>PARTICLES' color foundation is rebuilt and measured, not eyeballed. Buttons — component 1 of 28 — is fully migrated, documented, and carries a fixed accessibility bug the old architecture could never have surfaced by inspection alone. And HubbleUI Design Assistant is live and in active use across redPro design work, grown from a 263-line v3 that could only flag and auto-fix, into a 722-line v5 that scores adoption, classifies drift into three failure modes, and runs an AI fidelity check against real builds. Next: Badges, then the remaining 26 components, and the parked question of several hundred canvas elements still depending on deprecated legacy collections.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Agentic HubbleUI (planned) ────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">What's next</span><h2 class="ns-h2">Designing with the system, not just checking against it</h2></div>
+      <div class="ns-copy">
+        <span class="ns-status"><span class="dot"></span> Plan — not yet built</span>
+        <p>Everything above catches drift after a designer has already made something. The next step goes earlier: give an agent the system itself — tokens, components, rules, patterns — as structured knowledge, so it can propose correct designs in the first place instead of getting audited afterward. Three layers, in order.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure scrollx">
+      <div class="ns-shot"><img src="assets/hubbleui/userflow.png" alt="Agentic HubbleUI plan — three layers: Knowledge (the design system), Agent (Claude with system context), and Execution (design output)" /></div>
+      <figcaption>The full plan, mapped out layer by layer — Knowledge feeding a single system prompt, the Agent reasoning within it, Execution gated behind an approved plan.</figcaption>
+    </figure>
+
+    <div class="ns-beats">
+      <div class="ns-beat">
+        <div class="ns-beat-num">01</div>
+        <div>
+          <h4>Knowledge — the design system, machine-readable</h4>
+          <p>The same system this case study is about, rewritten as structured files an agent can actually read — not prose documentation, data. Tokens follow the identical Primitive → Semantic → Component chain built for color, extended to every token type. Component registry.md extends the same five-section template (Use-when, Do-not-use, Variant map, Anti-substitutions) built for the Buttons migration. A live Figma MCP feed keeps it current against the real file, not a snapshot.</p>
+          <div class="ns-filelist">
+            <span class="done">Tokens.json — color</span>
+            <span class="done">typography</span>
+            <span class="done">spacing</span>
+            <span class="done">radius</span>
+            <span class="done">elevation</span>
+            <span class="pending">unit values</span>
+            <span class="pending">Component registry.md</span>
+            <span class="pending">Design rules.md</span>
+            <span class="pending">redPro patterns.md</span>
+            <span class="pending">Icon library.md</span>
+            <span class="pending">Figma MCP — live feed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ns-beat">
+        <div class="ns-beat-num">02</div>
+        <div>
+          <h4>Agent — Claude, with the system as its context</h4>
+          <p>All seven knowledge sources compile into one agent-system-prompt.md: a persona, references back into the knowledge layer, output-format rules, an explicit decision sequence, and — the part that actually matters — guardrails. The guardrails are where "don't hardcode a hex" and "Disabled is a state, not a color intent" stop being rules a reviewer enforces after the fact, and become constraints the agent can't reason its way around while generating.</p>
+        </div>
+      </div>
+
+      <div class="ns-beat">
+        <div class="ns-beat-num">03</div>
+        <div>
+          <h4>Execution — output, gated by approval</h4>
+          <p>The agent proposes a plan first; it doesn't act unprompted. Only once that plan is approved does execution produce Figma frames, an HTML mockup, and a written design spec together, from the same source of truth, in one pass. The approval gate is deliberate — the same instinct behind building tooling that flags drift rather than silently auto-correcting it everywhere: a human stays the last check before anything reaches production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Close ────────────────────────────────────────────── -->
+  <div class="ns-close">
+    <span class="ns-kicker">Next</span>
+    <h2 class="ns-close-title"><a href="redpro-homepage.html">redPro Homepage Dashboard →</a></h2>
+  </div>
+
+  <footer class="ns-footer">
+    <span>© 2026 Swaraj Kumar</span>
+    <div class="ns-footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../work.html">Work</a>
+    </div>
+    <span>Bangalore, India</span>
+  </footer>
+
+  <!-- ── Image lightbox ───────────────────────────────────── -->
+  <div class="ns-lightbox" id="ns-lightbox">
+    <button class="ns-lightbox-close" id="ns-lightbox-close" aria-label="Close">&times;</button>
+    <div class="ns-lightbox-inner">
+      <img id="ns-lightbox-img" src="" alt="" />
+      <div class="ns-lightbox-caption" id="ns-lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="../js/case-study.js?v=2"></script>
+</body>
+</html>

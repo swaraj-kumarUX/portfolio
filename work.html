@@ -4,135 +4,140 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work — Swaraj Kumar</title>
-  <meta name="description" content="All UX design projects by Swaraj Kumar — case studies in product design, design systems, and mobile apps." />
+  <meta name="description" content="Case studies in product design, design systems, and research by Swaraj Kumar, Senior UX Designer at redBus (MakeMyTrip Group)." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=ig1" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/home.css?v=1790736000" />
 </head>
 <body>
 
-  <div class="cursor-dot"></div>
-  <div id="page-veil"></div>
+  <!-- one continuous background for the whole page — see .hp-bg in home.css -->
+  <div class="hp-bg" aria-hidden="true">
+    <div class="hp-bg-grid"></div>
+    <div class="hp-bg-squares"></div>
+    <div class="hp-bg-glow"></div>
+  </div>
 
-  <header>
-    <div class="frame tl">
-      <a href="index.html">
-        <span class="brand-name">Swaraj Kumar</span>
-        <span class="brand-sub">Senior UX Designer</span>
-      </a>
+
+  <nav class="hp-nav">
+    <a class="hp-brand" href="index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
+    <div class="hp-nav-links">
+      <a class="active" href="work.html" aria-current="page">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé<span class="sr-only"> (opens in new tab)</span></a>
     </div>
-    <nav class="frame tr">
-      <a class="hl active" href="work.html">Work</a>
-      <a class="hl" href="index.html#about">About</a>
-      <a class="hl" href="contact.html">Contact</a>
-    </nav>
-    <div class="frame br">
-      <a class="hl" href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
+    <a class="hp-nav-cta" href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
+  </nav>
+
+  <!-- ── Page head ────────────────────────────────────────── -->
+  <header class="hp-pagehead">
+    <div class="hp-hero-bg" aria-hidden="true"><div class="hp-hero-glow"></div></div>
+
+    <div class="hp-pagehead-inner">
+      <span class="hp-status"><span class="sq" aria-hidden="true"></span>Selected work</span>
+      <h1 class="hp-pagehead-title">Work</h1>
+      <p class="hp-pagehead-sub">End-to-end case studies from redBus — where the research came from, what I tested, what I got wrong, and what shipped.</p>
     </div>
   </header>
 
-  <!-- ── Page head ────────────────────────────────────────── -->
-  <div class="page-head">
-    <h1 class="page-title fade in">All <em>work</em></h1>
-    <p class="page-sub fade in d1">Six projects spanning design systems, mobile apps, enterprise products and research.</p>
-  </div>
+  <main>
 
-  <!-- ── Filters ──────────────────────────────────────────── -->
-  <div class="filters fade in d2">
-    <button class="filter-btn active" data-filter="all">All</button>
-    <button class="filter-btn" data-filter="design-system">Design systems</button>
-    <button class="filter-btn" data-filter="mobile">Mobile</button>
-    <button class="filter-btn" data-filter="web">Web &amp; dashboard</button>
-    <button class="filter-btn" data-filter="research">Research</button>
-  </div>
+  <!-- ── List ─────────────────────────────────────────────── -->
+  <section class="hp-work">
 
-  <!-- ── Grid ─────────────────────────────────────────────── -->
-  <div class="work-grid">
+    <div class="hp-work-wrap">
+      <div class="hp-show-list">
 
-    <a class="work-card fade" href="#" data-category="design-system">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(70% 100% at 25% 0%, #efedea, transparent 60%),
-          linear-gradient(150deg, #e3e1dd, #d7d5d1);"></div>
-        <div class="piece-num">01</div>
+        <a class="hp-show hp-fade" href="case-studies/ota-reconciliation.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-bitla.png" width="152" height="44" alt="BITLA" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">Design-validated · 2026</div>
+            <h3 class="hp-show-title">Invoice<br>reconciliation tool</h3>
+            <p class="hp-show-dek">Simplifying reconciliation of invoices for bus operators</p>
+            <div class="hp-show-tags">
+              <span>Field research</span><span>Usability testing</span><span>Redesign</span>
+            </div>
+          </div>
+          <div class="hp-show-shot hp-show-stack">
+            <img class="back" src="case-studies/assets/ota-reconciliation/PNR%20table.png" alt="" aria-hidden="true" />
+            <img class="front" src="case-studies/assets/ota-reconciliation/Reconciliation%20report.png" alt="Invoice reconciliation summary screen — difference amount, donut-chart breakups and discrepancy types" />
+          </div>
+        </a>
+
+        <a class="hp-show hp-fade" href="case-studies/hubbleui.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-redbus.png" width="53" height="53" alt="redBus" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">Live, in use · 2026</div>
+            <h3 class="hp-show-title">HubbleUi design<br>system</h3>
+            <p class="hp-show-dek">Rebuilt color foundation and built an AI-powered Figma plugin</p>
+            <div class="hp-show-tags">
+              <span>Design system upgrade</span><span>Accessibility</span><span>Plugin</span>
+            </div>
+          </div>
+          <div class="hp-show-shot hp-show-figma">
+            <img src="case-studies/assets/hubbleui/figma-workspace.png" width="518" height="313" alt="The HubbleUI library open in Figma — component pages, the layers panel and two screens mid-edit" />
+          </div>
+        </a>
+
+        <a class="hp-show hp-fade" href="case-studies/redpro-homepage.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-redbus.png" width="53" height="53" alt="redBus" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">Shipped · 2025</div>
+            <h3 class="hp-show-title">redPro homepage<br>dashboard</h3>
+            <p class="hp-show-dek">Turning a wall of metrics into a homepage that tells operators what to do next</p>
+            <div class="hp-show-tags">
+              <span>Heuristic audit</span><span>Dashboard</span><span>Data viz</span>
+            </div>
+          </div>
+          <div class="hp-show-shot">
+            <img src="case-studies/assets/redpro-homepage/homepage.png" alt="Redesigned redPro operator homepage with a services-that-need-attention tracker and recommendations" />
+          </div>
+        </a>
+
       </div>
-      <h3 class="wc-title">Theme Color Tokenization</h3>
-      <div class="wc-meta">Design System · Unisys · 2024</div>
-      <p class="wc-desc">Token-based theming across all product lines — design inconsistency down 70%, developer handoff time down 40%.</p>
-    </a>
 
-    <a class="work-card fade d1" href="#" data-category="mobile">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(70% 100% at 75% 100%, #eceae6, transparent 60%),
-          linear-gradient(200deg, #dedcd8, #d4d2ce);"></div>
-        <div class="piece-num">02</div>
-      </div>
-      <h3 class="wc-title">BeNeighbor</h3>
-      <div class="wc-meta">Mobile · Community · 2023</div>
-      <p class="wc-desc">Connecting neighbours for resource sharing, local events, and stronger housing societies.</p>
-    </a>
+      <p class="hp-work-note hp-fade">More case studies in progress — revMax Self-Serve.</p>
+    </div>
+  </section>
 
-    <a class="work-card fade" href="#" data-category="mobile">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(80% 90% at 50% 0%, #f0eeeb, transparent 55%),
-          linear-gradient(160deg, #e0ded9, #d2d0cc);"></div>
-        <div class="piece-num">03</div>
-      </div>
-      <h3 class="wc-title">Time Tracker for Gamers</h3>
-      <div class="wc-meta">Mobile · Behavioural UX · 2022</div>
-      <p class="wc-desc">Gamified goal-setting that encourages healthy gaming habits.</p>
-    </a>
+  <!-- ── Get in touch ─────────────────────────────────────── -->
+  <section class="hp-cta hp-fade" id="cta">
+    <span class="hp-kicker">Get in touch</span>
+    <h2 class="hp-cta-title">Get in touch!</h2>
+    <p class="hp-cta-sub">I hope you enjoyed what you saw! If you want to talk about a role, a project, or just compare notes on design systems and B2B UX, I’d love to hear from you.</p>
+    <div class="hp-cta-links">
+      <a href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">Linkedin <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="https://www.behance.net/swarajkumar1" target="_blank" rel="noopener">Behance <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Resume <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="mailto:swaraj.kumar0103@gmail.com">swaraj.kumar0103@gmail.com <span class="arrow">↗</span></a>
+    </div>
+  </section>
 
-    <a class="work-card fade d1" href="#" data-category="research">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(70% 90% at 30% 100%, #edebe8, transparent 60%),
-          linear-gradient(140deg, #e1dfdb, #d5d3cf);"></div>
-        <div class="piece-num">04</div>
-      </div>
-      <h3 class="wc-title">Understanding Colors</h3>
-      <div class="wc-meta">Research · Accessibility · 2023</div>
-      <p class="wc-desc">Colour psychology, accessibility, and how strategic colour choice shapes perception.</p>
-    </a>
+  </main>
 
-    <a class="work-card fade" href="#" data-category="web">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(80% 100% at 70% 0%, #efede9, transparent 55%),
-          linear-gradient(170deg, #dfddd9, #d3d1cd);"></div>
-        <div class="piece-num">05</div>
-      </div>
-      <h3 class="wc-title">Notification Panel</h3>
-      <div class="wc-meta">UI · Interaction · 2022</div>
-      <p class="wc-desc">Smart grouping, priority signals and clear action hierarchies to cut cognitive load.</p>
-    </a>
-
-    <a class="work-card fade d1" href="#" data-category="web">
-      <div class="wc-visual">
-        <div class="art" style="background:
-          radial-gradient(70% 90% at 20% 0%, #eeece8, transparent 60%),
-          linear-gradient(190deg, #e2e0dc, #d6d4d0);"></div>
-        <div class="piece-num">06</div>
-      </div>
-      <h3 class="wc-title">Complex Canvas Design</h3>
-      <div class="wc-meta">Web App · B2B · 2022</div>
-      <p class="wc-desc">A multi-layered visual editor with drag-and-drop behaviour and contextual tooling for Workik.</p>
-    </a>
-
-  </div>
-
-  <footer>
+  <footer class="hp-footer">
     <span>© 2026 Swaraj Kumar</span>
-    <div class="f-links">
-      <a class="hl" href="index.html">Home</a>
-      <a class="hl" href="work.html">Work</a>
-      <a class="hl" href="contact.html">Contact</a>
+    <div class="hp-footer-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
     </div>
     <span>Bangalore, India</span>
   </footer>
 
-  <script src="js/main.js?v=ig1"></script>
+  <script src="js/home.js?v=1790736000"></script>
+  <script src="js/bgfx.js?v=1790736000"></script>
 </body>
 </html>

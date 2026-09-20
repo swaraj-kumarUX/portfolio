@@ -4,195 +4,201 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Swaraj Kumar — Senior UX Designer</title>
-  <meta name="description" content="Senior UX Designer at redBus (MakeMyTrip Group) with 5+ years crafting human-centred digital experiences. Based in Bangalore, India." />
+  <meta name="description" content="Swaraj Kumar, Senior UX Designer at redBus (MakeMyTrip Group). Design systems, B2B product UX, and research-led case studies from redPro." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="css/style.css?v=ig1" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="css/home.css?v=1790736000" />
 </head>
-<body class="loading">
+<body>
 
-  <div class="cursor-dot"></div>
-  <div id="page-veil"></div>
+  <!-- one continuous background for the whole page — see .hp-bg in home.css -->
+  <div class="hp-bg" aria-hidden="true">
+    <div class="hp-bg-grid"></div>
+    <div class="hp-bg-squares"></div>
+    <div class="hp-bg-glow"></div>
+  </div>
 
-  <!-- Intro -->
-  <div id="intro"><div class="intro-mark">Swaraj Kumar</div></div>
 
-  <!-- Fixed frame -->
-  <header>
-    <div class="frame tl">
-      <a href="index.html">
-        <span class="brand-name">Swaraj Kumar</span>
-        <span class="brand-sub">Senior UX Designer</span>
-      </a>
+  <nav class="hp-nav">
+    <a class="hp-brand" href="index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
+    <div class="hp-nav-links">
+      <a href="work.html">Work</a>
+      <a href="index.html#about">About</a>
+      <a href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé<span class="sr-only"> (opens in new tab)</span></a>
     </div>
-    <nav class="frame tr">
-      <a class="hl" href="work.html">Work</a>
-      <a class="hl" href="index.html#about">About</a>
-      <a class="hl" href="contact.html">Contact</a>
-    </nav>
-    <div class="frame bl">
-      <a class="hl" href="work.html">See all projects</a>
-    </div>
-    <div class="frame br">
-      <a class="hl" href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé</a>
-    </div>
-  </header>
+    <a class="hp-nav-cta" href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
+  </nav>
 
   <!-- ── Hero ─────────────────────────────────────────────── -->
-  <section id="hero">
-    <div id="relief" aria-hidden="true"></div>
-    <h1 class="hero-line">Designing digital experiences <em>people love</em></h1>
-    <div class="scroll-cue">Scroll down</div>
+  <header class="hp-hero hp-hero-v2">
+    <div class="hp-hero-bg" aria-hidden="true"><div class="hp-hero-glow"></div></div>
+
+    <div class="hp-hero-inner hp-hero-left">
+      <span class="hp-hero-kicker">Hi, I’m Swaraj</span>
+      <h1 class="hp-hero-name hp-hero-name-sans">Crafting intuitive experiences<br>for complex B2B products.</h1>
+      <p class="hp-hero-tagline hp-hero-tagline-left">Simplicity is my superpower. From research and strategy to scalable design systems, I create user experiences that improve adoption, efficiency, and business outcomes.</p>
+      <p class="hp-hero-current-v2">Currently <strong>Senior UX designer</strong> at <strong>redBus</strong></p>
+      <div class="hp-hero-actions">
+        <a class="hp-hero-cta-v2" href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download resume
+        </a>
+        <a class="hp-hero-secondary" href="#about">Why should you hire me?</a>
+      </div>
+    </div>
+
+    <a class="hp-hero-scroll-v2" href="#about">
+      <span class="circle" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v15M12 19l-6-6M12 19l6-6" stroke="#9C5B00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      Scroll to see more
+    </a>
+
+</header>
+
+  <main>
+
+  <!-- ── Work ─────────────────────────────────────────────── -->
+  <section class="hp-work">
+
+    <div class="hp-work-wrap">
+      <h2 class="hp-work-heading hp-fade">Work</h2>
+
+      <div class="hp-show-list">
+
+        <a class="hp-show hp-fade" href="case-studies/ota-reconciliation.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-bitla.png" width="152" height="44" alt="BITLA" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">2026</div>
+            <h3 class="hp-show-title">Invoice<br>reconciliation tool</h3>
+            <p class="hp-show-dek">Simplifying reconciliation of invoices for bus operators</p>
+            <div class="hp-show-tags">
+              <span>Field research</span><span>Usability testing</span><span>Redesign</span>
+            </div>
+          </div>
+          <div class="hp-show-shot hp-show-stack">
+            <img class="back" src="case-studies/assets/ota-reconciliation/PNR%20table.png" alt="" aria-hidden="true" />
+            <img class="front" src="case-studies/assets/ota-reconciliation/Reconciliation%20report.png" alt="Invoice reconciliation summary screen — difference amount, donut-chart breakups and discrepancy types" />
+          </div>
+        </a>
+
+        <a class="hp-show hp-fade" href="case-studies/hubbleui.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-redbus.png" width="53" height="53" alt="redBus" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">2026</div>
+            <h3 class="hp-show-title">HubbleUi design<br>system</h3>
+            <p class="hp-show-dek">Rebuilt color foundation and built an AI-powered Figma plugin</p>
+            <div class="hp-show-tags">
+              <span>Design system upgrade</span><span>Accessibility</span><span>Plugin</span>
+            </div>
+          </div>
+          <div class="hp-show-shot hp-show-figma">
+            <img src="case-studies/assets/hubbleui/figma-workspace.png" width="518" height="313" alt="The HubbleUI library open in Figma — component pages, the layers panel and two screens mid-edit" />
+          </div>
+        </a>
+
+        <a class="hp-show hp-fade" href="case-studies/redpro-homepage.html">
+          <div class="hp-show-copy">
+            <div class="hp-show-brand">
+              <img src="assets/logo-redbus.png" width="53" height="53" alt="redBus" />
+              <span class="sep"></span>
+              <span class="hp-show-platform">Web</span>
+            </div>
+            <div class="hp-show-year">2025</div>
+            <h3 class="hp-show-title">redPro homepage<br>dashboard</h3>
+            <p class="hp-show-dek">Turning a wall of metrics into a homepage that tells operators what to do next</p>
+            <div class="hp-show-tags">
+              <span>Heuristic audit</span><span>Dashboard</span><span>Data viz</span>
+            </div>
+          </div>
+          <div class="hp-show-shot">
+            <img src="case-studies/assets/redpro-homepage/homepage.png" alt="Redesigned redPro operator homepage with a services-that-need-attention tracker and recommendations" />
+          </div>
+        </a>
+
+      </div>
+    </div>
   </section>
-
-  <!-- ── Selected work ────────────────────────────────────── -->
-  <section id="work"><div class="wrap">
-    <div class="sec-head fade">
-      <h2 class="sec-title">Selected <em class="serif" style="font-style:italic">work</em></h2>
-      <a class="hl caps" href="work.html" style="color:var(--ink)">All projects</a>
-    </div>
-    <div class="rule"></div>
-
-    <div class="works">
-
-      <a class="piece fade" href="work.html">
-        <div class="piece-visual">
-          <div class="art" style="background:
-            radial-gradient(70% 100% at 25% 0%, #efedea, transparent 60%),
-            linear-gradient(150deg, #e3e1dd 0%, #d7d5d1 55%, #dcdad6 100%);"></div>
-          <div class="piece-num">01</div>
-        </div>
-        <div class="piece-meta">
-          <h3 class="piece-title">Theme Color Tokenization</h3>
-          <span class="piece-cat">Design System · Unisys · 2024</span>
-        </div>
-        <p class="piece-desc">An enterprise-scale token system enabling seamless theming and brand consistency across 10+ product surfaces.</p>
-      </a>
-
-      <a class="piece fade" href="work.html">
-        <div class="piece-visual">
-          <div class="art" style="background:
-            radial-gradient(70% 100% at 75% 100%, #eceae6, transparent 60%),
-            linear-gradient(200deg, #dedcd8 0%, #d4d2ce 60%, #dbd9d5 100%);"></div>
-          <div class="piece-num">02</div>
-        </div>
-        <div class="piece-meta">
-          <h3 class="piece-title">BeNeighbor</h3>
-          <span class="piece-cat">Mobile App · Community · 2023</span>
-        </div>
-        <p class="piece-desc">A community-first app connecting neighbours for resource sharing, local events, and stronger housing societies.</p>
-      </a>
-
-      <a class="piece fade" href="work.html">
-        <div class="piece-visual">
-          <div class="art" style="background:
-            radial-gradient(80% 90% at 50% 0%, #f0eeeb, transparent 55%),
-            linear-gradient(160deg, #e0ded9 0%, #d2d0cc 100%);"></div>
-          <div class="piece-num">03</div>
-        </div>
-        <div class="piece-meta">
-          <h3 class="piece-title">Time Tracker for Gamers</h3>
-          <span class="piece-cat">Product · Behavioural UX · 2022</span>
-        </div>
-        <p class="piece-desc">A playful time-management tool balancing motivation with healthy screen-time awareness.</p>
-      </a>
-
-    </div>
-  </div></section>
 
   <!-- ── Experience ───────────────────────────────────────── -->
-  <section id="experience"><div class="wrap">
-    <div class="sec-head fade">
-      <h2 class="sec-title">Experience</h2>
-      <span class="caps">5+ years</span>
-    </div>
+  <section class="hp-exp" id="about">
 
-    <div class="exp-rows">
-      <div class="exp-row fade">
-        <div class="exp-date">Jul 2024 — Present</div>
-        <div>
-          <div class="exp-role">Senior UX Designer</div>
-          <div class="exp-co">redBus · MakeMyTrip Group · Bangalore</div>
-        </div>
-        <p class="exp-note">End-to-end UX for operator and customer features — route optimization, boarding points, seat layouts — and scaling the design system across platforms.</p>
-      </div>
-      <div class="exp-row fade">
-        <div class="exp-date">Jun 2022 — Jun 2024</div>
-        <div>
-          <div class="exp-role">Senior UI/UX Designer</div>
-          <div class="exp-co">Unisys India · Quess Corp · Bangalore</div>
-        </div>
-        <p class="exp-note">Componentized Figma templates boosting designer efficiency by 60%; built an enterprise design system.</p>
-      </div>
-      <div class="exp-row fade">
-        <div class="exp-date">May 2021 — Jun 2022</div>
-        <div>
-          <div class="exp-role">Product Designer</div>
-          <div class="exp-co">Workik · Bangalore</div>
-        </div>
-        <p class="exp-note">Independent, deadline-driven design projects with engineers, PMs and QA.</p>
-      </div>
-    </div>
-  </div></section>
+    <div class="hp-exp-wrap">
+      <h2 class="hp-exp-heading hp-fade">Experience</h2>
 
-  <!-- ── About ────────────────────────────────────────────── -->
-  <section id="about"><div class="wrap">
-    <div class="sec-head fade">
-      <h2 class="sec-title">About</h2>
-      <a class="hl caps" href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener" style="color:var(--ink)">View résumé</a>
-    </div>
-    <div class="rule"></div>
+      <div class="hp-exp-list">
 
-    <div class="about-grid">
-      <p class="about-lede fade">I believe great design lives at the crossroads of deep empathy, thoughtful strategy, and pixel-level craft.</p>
-      <div class="about-body fade d1">
-        <p>I'm Swaraj Kumar, a Senior UX Designer at redBus (MakeMyTrip Group), based in Bangalore, India, with 5+ years of experience creating products that genuinely improve people's lives.</p>
-        <p>At redBus I lead end-to-end UX for operator and customer-facing features and scale the design system across platforms — pairing a design-thinking mindset with an MBA in marketing &amp; analytics.</p>
-
-        <div class="edu">
-          <div class="edu-row">
-            <span class="edu-year">2020–22</span>
-            <span class="edu-what">MBA — Marketing &amp; Analytics (GPA 9.3) <span class="edu-where">· Army Institute of Management, Kolkata</span></span>
+        <div class="hp-exp-card hp-fade">
+          <div class="hp-exp-copy">
+            <div class="hp-exp-date">2024 - Present</div>
+            <h3 class="hp-exp-role">Senior UX Designer @ redBus</h3>
+            <p class="hp-exp-desc">Designing high utility solutions for redBus backend systems</p>
           </div>
-          <div class="edu-row">
-            <span class="edu-year">2024</span>
-            <span class="edu-what">Generative AI Fundamentals <span class="edu-where">· Google Cloud</span></span>
-          </div>
-          <div class="edu-row">
-            <span class="edu-year">2022–23</span>
-            <span class="edu-what">Design Thinking for UX Designers <span class="edu-where">· IIT Delhi</span></span>
+          <div class="hp-exp-logo">
+            <img src="assets/logo-redbus.png" width="80" height="80" alt="" aria-hidden="true" />
           </div>
         </div>
-      </div>
-    </div>
-  </div></section>
 
-  <!-- ── Contact CTA ──────────────────────────────────────── -->
-  <section id="contact-cta">
-    <h2 class="cta-big fade">Let's make something <em>great</em></h2>
-    <div class="fade d1">
-      <a class="cta-mail hl" href="mailto:swaraj.kumar0103@gmail.com">swaraj.kumar0103@gmail.com</a>
-    </div>
-    <div class="cta-socials fade d2">
-      <a class="hl" href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="hl" href="https://www.behance.net/swarajkumar1" target="_blank" rel="noopener">Behance</a>
-      <a class="hl" href="https://www.instagram.com/theaveragedesignco_?igsh=M2V6ZXpvZ29rMm9s" target="_blank" rel="noopener">Instagram</a>
-      <a class="hl" href="contact.html">Contact page</a>
+        <div class="hp-exp-card hp-fade">
+          <div class="hp-exp-copy">
+            <div class="hp-exp-date">2022 - 2024</div>
+            <h3 class="hp-exp-role">Senior UI/UX Designer @ Unisys</h3>
+            <p class="hp-exp-desc">Crafted User Experience for international SaaS products</p>
+          </div>
+          <div class="hp-exp-logo">
+            <img src="assets/logo-unisys.png" width="160" height="31" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+        <div class="hp-exp-card hp-fade">
+          <div class="hp-exp-copy">
+            <div class="hp-exp-date">2021 - 2022</div>
+            <h3 class="hp-exp-role">Product Designer @ Workik</h3>
+            <p class="hp-exp-desc">Led end to end design</p>
+          </div>
+          <div class="hp-exp-logo">
+            <img src="assets/logo-workik.png" width="130" height="68" alt="" aria-hidden="true" />
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-  <!-- ── Footer ───────────────────────────────────────────── -->
-  <footer>
+  <!-- ── Get in touch ─────────────────────────────────────── -->
+  <section class="hp-cta hp-fade" id="cta">
+    <span class="hp-kicker">Get in touch</span>
+    <h2 class="hp-cta-title">Get in touch!</h2>
+    <p class="hp-cta-sub">I hope you enjoyed what you saw! If you want to talk about a role, a project, or just compare notes on design systems and B2B UX, I’d love to hear from you.</p>
+    <div class="hp-cta-links">
+      <a href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">Linkedin <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="https://www.behance.net/swarajkumar1" target="_blank" rel="noopener">Behance <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Resume <span class="arrow">↗</span><span class="sr-only"> (opens in new tab)</span></a>
+      <a href="mailto:swaraj.kumar0103@gmail.com">swaraj.kumar0103@gmail.com <span class="arrow">↗</span></a>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="hp-footer">
     <span>© 2026 Swaraj Kumar</span>
-    <div class="f-links">
-      <a class="hl" href="index.html">Home</a>
-      <a class="hl" href="work.html">Work</a>
-      <a class="hl" href="contact.html">Contact</a>
+    <div class="hp-footer-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
     </div>
     <span>Bangalore, India</span>
   </footer>
 
-  <script src="js/main.js?v=ig1"></script>
-  <script src="js/relief.js?v=ig1"></script>
+  <script src="js/home.js?v=1790736000"></script>
+  <script src="js/bgfx.js?v=1790736000"></script>
 </body>
 </html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OTA Reconciliation — Swaraj Kumar</title>
+  <meta name="description" content="Redesigning how bus operators reconcile OTA payments at redBus — from two in-person field interviews to a tested, chart-led summary screen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+</head>
+<body>
+
+  <nav class="ns-nav">
+    <a class="ns-brand" href="../index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
+    <div class="ns-nav-links">
+      <a href="../work.html" class="active">Work</a>
+      <a href="../index.html#about">About</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <header class="ns-hero">
+    <span class="ns-eyebrow">Case study · redBus / Bitla</span>
+    <div class="ns-hero-grid">
+      <div>
+        <h1 class="ns-title">OTA Reconciliation</h1>
+        <p class="ns-dek">Operators didn't need a cleaner table of mismatches — they needed to know whether a difference was worth their time. I redesigned the flow around that, tested two directions head-to-head with real operators, and shipped the one that made the "why" visible without a click.</p>
+      </div>
+    </div>
+
+    <div class="ns-meta">
+      <div class="ns-meta-item"><span class="ns-meta-label">Role</span><span class="ns-meta-val">UX lead, solo — discovery through handoff</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Team</span><span class="ns-meta-val">redBus reconciliation team · Bitla/ticketsimply engineering</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Tools</span><span class="ns-meta-val">Figma · FigJam · HTML prototyping</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Timeframe</span><span class="ns-meta-val">May – Sep 2026</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Status</span><span class="ns-meta-val">Design-validated, pre-launch</span></div>
+    </div>
+
+    <div class="ns-hero-art" aria-hidden="true">
+      <svg viewBox="0 0 240 200" fill="none">
+        <circle cx="80" cy="100" r="62" stroke="rgba(255,255,255,0.08)" stroke-width="26"/>
+        <circle cx="80" cy="100" r="62" stroke="#5FA8E0" stroke-width="26" stroke-dasharray="152 390" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#35C2AC" stroke-width="26" stroke-dasharray="70 390" stroke-dashoffset="-152" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#E8A33D" stroke-width="26" stroke-dasharray="40 390" stroke-dashoffset="-222" stroke-linecap="round"/>
+        <circle cx="176" cy="60" r="30" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+        <circle cx="176" cy="60" r="30" stroke="#35C2AC" stroke-width="14" stroke-dasharray="60 188" stroke-linecap="round"/>
+        <circle cx="196" cy="150" r="18" stroke="rgba(255,255,255,0.08)" stroke-width="9"/>
+        <circle cx="196" cy="150" r="18" stroke="#5FA8E0" stroke-width="9" stroke-dasharray="30 113" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ── Objective ────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Objective</span></div>
+      <div class="ns-copy">
+        <p>Design a reconciliation experience that explains <em>why</em> a number is wrong, not just that it is — for operators who don't want to learn a new system, they want to <strong>understand their money</strong>.</p>
+        <p>The existing flow, and the tool operators actually reached for instead, both stopped at "here's what doesn't match." Neither ever explained why — so every reconciliation still ended in manual digging.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Context ──────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Context</span><h2 class="ns-h2">What operators were dealing with</h2></div>
+      <div class="ns-copy">
+        <p>Bus operators reconcile every invoice redBus sends them against their own records — checking that what they were paid matches what they believe they're owed, PNR by PNR, invoice after invoice. The existing Ticketsimply flow does the mechanical part correctly: it fetches the report, runs the comparison, lists what doesn't match.</p>
+        <p>What it never does is say <strong>why</strong>. An operator gets a spreadsheet of flagged rows and has to go dig — manually, invoice by invoice — before deciding whether a difference is even worth chasing.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/ota-reconciliation/Existing%20flow.png" alt="Existing Ticketsimply reconciliation flow, annotated" /></div>
+      <figcaption>The legacy flow, annotated. Every step works — the report at the end just never says why a number is wrong.</figcaption>
+    </figure>
+
+    <figure class="ns-figure scrollx">
+      <div class="ns-shot"><img src="assets/ota-reconciliation/User%20flows.png" alt="Real screenshots of the legacy flow, ending in an unexplained spreadsheet report" /></div>
+      <figcaption>The real flow, screen by screen — ending in a raw, Excel-style report with mismatches listed and no reason attached to any of them.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── Scoping ──────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Scoping</span><h2 class="ns-h2">Design challenges &amp; scope</h2></div>
+      <div class="ns-copy">
+        <p>This is a trust product before it's a UI problem — operators act on these numbers with real money. That shaped how I scoped the work.</p>
+        <div class="ns-pairlist">
+          <div>
+            <div class="ns-pl-label">Challenge</div>
+            <p>Financial data an operator can act on without re-verifying it by hand — while the tool they use today (Gaadi Kharcha) has trained them not to trust an explanation they can't check.</p>
+          </div>
+          <div>
+            <div class="ns-pl-label">Scope</div>
+            <p>Field research with real operators · competitive teardown of Gaadi Kharcha · a redesigned auto-reconciliation flow · a tested summary screen · an AI Summary layer with explicit trust rules · production handoff.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Storytelling: 3 beats ────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Process</span><h2 class="ns-h2">Three decisions that carried the redesign</h2></div>
+      <div class="ns-copy">
+        <div class="ns-beats">
+          <div class="ns-beat">
+            <div class="ns-beat-num">01</div>
+            <div>
+              <h4>Reframe the question — from "what" to "why"</h4>
+              <p>Two in-person operator interviews turned a screen-level brief into a product-level reframe: operators don't want a cleaner mismatch table, they want to know whether a difference is worth their time.</p>
+            </div>
+          </div>
+          <div class="ns-beat">
+            <div class="ns-beat-num">02</div>
+            <div>
+              <h4>Cut the friction operators never asked to keep</h4>
+              <p>Two manual uploads became an auto-reconciliation flow, syncing directly from redPro via API — removing the exact step operators complained about, unprompted, in research.</p>
+            </div>
+          </div>
+          <div class="ns-beat">
+            <div class="ns-beat-num">03</div>
+            <div>
+              <h4>Earn trust with rules, not just polish</h4>
+              <p>The AI Summary layer only states what it can prove — a rule that exists because I caught it lying to me first, in my own first draft.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research ─────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">01 · Research</span><h2 class="ns-h2">Two operators, one afternoon each</h2></div>
+      <div class="ns-copy">
+        <p>I took a printed questionnaire on the road and sat down with two operators in person — Seabird Tourists and Rajesh Transports — expecting to validate a screen. Their answers reframed the whole product instead.</p>
+      </div>
+    </div>
+
+    <div class="ns-research">
+      <div class="ns-research-card">
+        <div class="ns-research-photo"><img src="assets/ota-reconciliation/research/Seabird.png" alt="Handwritten interview sheet, Seabird Tourists" /></div>
+        <div class="ns-research-quote">
+          <div class="ns-op">Seabird Tourists · 10 May 2026</div>
+          <p>"Reconciliation means confirming me the difference and where the difference is going — it's like matching."</p>
+        </div>
+      </div>
+      <div class="ns-research-card">
+        <div class="ns-research-photo"><img src="assets/ota-reconciliation/research/Rajesh.png" alt="Handwritten interview sheet, Rajesh Transports" /></div>
+        <div class="ns-research-quote">
+          <div class="ns-op">Rajesh Transports · 12 May 2026</div>
+          <p>"Justification." — the entire answer to "what does resolved mean to you."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-row" style="margin-top:48px;">
+      <div></div>
+      <div class="ns-copy">
+        <p>Neither operator described wanting a cleaner table. Both described wanting to be told why. Two more answers on those sheets fed directly into shipped decisions:</p>
+      </div>
+    </div>
+
+    <div class="ns-insights">
+      <div class="ns-insight">
+        <div class="from"><div class="ns-i-label">Rajesh, unprompted</div><p>"Offers and deals opted by operators are not tracked, and that creates difference."</p></div>
+        <div class="to"><div class="ns-i-label">Shipped as</div><p>"Incorrect offer charges" exists as its own discrepancy category, rather than a generic "other."</p></div>
+      </div>
+      <div class="ns-insight">
+        <div class="from"><div class="ns-i-label">Rajesh, on default detail level</div><p>"Don't want to see every detail — summary, see root-level summary, service and bus number. They want NRR."</p></div>
+        <div class="to"><div class="ns-i-label">Shipped as</div><p>The AI Summary's first rule: lead with the state, not the problem count.</p></div>
+      </div>
+    </div>
+
+    <div class="ns-copy" style="margin-top:36px; max-width:68ch;">
+      <p>Both operators, independently, named Gaadi Kharcha as what they actually use today — Seabird called it "easy to use for any layman." It has the same gap: two manual uploads per run, and mismatches flagged without ever being explained.</p>
+    </div>
+
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/ota-reconciliation/Gaadikharcha%20flow.png" alt="Gaadi Kharcha's competing reconciliation flow" /></div>
+      <figcaption>Gaadi Kharcha — the tool both operators use today. Same gap, different product.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── Pull quote ───────────────────────────────────────── -->
+  <div class="ns-pullquote">
+    <p>"If I know WHY, the difference is manageable."</p>
+    <cite>The line that ended up driving every downstream decision</cite>
+  </div>
+
+  <!-- ── Redesign / flow ──────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">02 · Redesign</span><h2 class="ns-h2">Auto-sync, not two manual uploads</h2></div>
+      <div class="ns-copy">
+        <p>The original flow required uploading both a bank statement and an OTA invoice by hand. I redesigned it into an auto-reconciliation flow: Bitla GDS pulls data directly from redPro, redBus's own operator database, via API — and the bank statement upload becomes optional rather than blocking.</p>
+        <p>Non-redBus OTAs (AbhiBus, Paytm, and others) still require manual upload, since no equivalent API exists for them yet. Whether that stays the final state or is a phase-1 limitation is an open question I flagged rather than resolved unilaterally.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/ota-reconciliation/New%20userflow.png" alt="The redesigned auto-reconciliation user flow" /></div>
+      <figcaption>The redesigned flow — auto-sync from redPro, the full escalation lifecycle, and a parallel lane for service-level discrepancies.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── Concept test ─────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Testing</span><h2 class="ns-h2">Two real layouts, tested head-to-head</h2></div>
+      <div class="ns-copy">
+        <p>Rather than ship a single direction on instinct, I designed two competing versions of the core summary screen and ran a structured comparison test — comprehension questions with known correct answers, timed tasks, and one question that cut past politeness: <em>"Would you send a dispute to redBus based only on this, without checking by hand?"</em> A screen operators like but don't trust enough to act on hasn't solved the actual problem.</p>
+      </div>
+    </div>
+
+    <div class="ns-concepts">
+      <div class="ns-concept selected">
+        <div class="ns-concept-badge">✓ Selected</div>
+        <div class="ns-concept-shot"><img src="assets/ota-reconciliation/Reconciliation%20report.png" alt="V1: donut-chart breakup plus accordions" /></div>
+        <div class="ns-concept-body">
+          <div class="ns-concept-label">Concept 1 — V1</div>
+          <h4>Chart breakup + accordions</h4>
+          <p>Two donut charts visualize the invoice and difference-receivable breakup by category, on top of the same accordion detail as V2. Operators saw the biggest slice of the gap before opening a single row.</p>
+        </div>
+      </div>
+      <div class="ns-concept">
+        <div class="ns-concept-shot"><img src="assets/ota-reconciliation/V2.png" alt="V2: accordions only, no chart breakup" /></div>
+        <div class="ns-concept-body">
+          <div class="ns-concept-label">Concept 2 — V2</div>
+          <h4>Accordions only</h4>
+          <p>Simpler, cleaner-looking screen — same headline number, same accordion detail underneath, but no visual breakup. Operators could see <em>that</em> there was a gap, not <em>what kind</em>, without digging in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-callout">
+      <div class="ns-callout-label">Why V1 won</div>
+      <p>It wasn't information architecture — both versions gave operators identical accordions and identical PNR-level detail. It was <strong>data visualization</strong>: V1's charts made the "why" visible without a click. V2 made operators go looking for it, which quietly reintroduced the exact problem the redesign existed to fix.</p>
+    </div>
+  </section>
+
+  <!-- ── AI Summary / trust rules ─────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">03 · System</span><h2 class="ns-h2">The AI Summary, and the rule that governs it</h2></div>
+      <div class="ns-copy">
+        <p>On top of the detailed tables, the AI Summary answers the operator's real question — fine or not fine, and what kind of not-fine — in one read, before they touch a table.</p>
+      </div>
+    </div>
+
+    <div class="ns-grid4">
+      <div class="ns-tile"><div class="ns-tile-num">01</div><h4>Lead with the state</h4><p>"97% reconciled," not "33 mismatches found." Opening with the problem count turns every invoice into a perceived crisis.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">02</div><h4>Never overclaim confidence</h4><p>Caught a real bug where the category breakdown didn't sum to the headline number. Now it only states what it can trace to a real value.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">03</div><h4>Traceable, not just readable</h4><p>Every claim is one click from its source — clicking "33 PNRs" filters straight to those rows.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">04</div><h4>Scoped to where it helps</h4><p>The escalation screen gets a terse one-line version, so it never competes with the audit trail for attention.</p></div>
+    </div>
+
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/ota-reconciliation/Escalation%20status%20invoice%201.png" alt="AI Summary applied to the escalation status screen" /></div>
+      <figcaption>The same pattern, scaled down — one line, doesn't compete with the audit trail below it.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── Scope & constraints ──────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Honesty</span><h2 class="ns-h2">What I didn't build</h2></div>
+      <div class="ns-copy">
+        <p>Real scope, stated plainly rather than smoothed over:</p>
+      </div>
+    </div>
+    <div class="ns-grid4">
+      <div class="ns-tile"><h4>Placeholder accordions</h4><p>"Escalated PNRs" and "Invoice Deductions" show correct counts with only one category fully wired to real row data.</p></div>
+      <div class="ns-tile"><h4>SLA-nudge, unresolved</h4><p>What happens when an OTA doesn't respond in time was left explicitly open rather than guessed at.</p></div>
+      <div class="ns-tile"><h4>IA feedback, flagged not fixed</h4><p>Seabird's note that the app "has too many tabs" is an app-level signal above what one module can fix alone.</p></div>
+      <div class="ns-tile"><h4>Pre-launch</h4><p>Validated against real operator comprehension and behavior before a line of production code — not yet measured live.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Visual language ──────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Visual language</span><h2 class="ns-h2">Built in BITLA's real design tokens</h2></div>
+      <div class="ns-copy">
+        <p>No exploratory reskin — every screen was built in the actual production BITLA system, so what operators tested is what could ship as-is.</p>
+      </div>
+    </div>
+    <div class="ns-tokens">
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#3B85C8"></div><div class="ns-swatch-meta"><div class="name">Bitla blue</div><div class="hex">#3B85C8</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#008075"></div><div class="ns-swatch-meta"><div class="name">Teal accent</div><div class="hex">#008075</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#202124"></div><div class="ns-swatch-meta"><div class="name">Ink</div><div class="hex">#202124</div></div></div>
+      <div class="ns-swatch"><div class="ns-swatch-color" style="background:#F4F1EA"></div><div class="ns-swatch-meta"><div class="name">Card / paper</div><div class="hex">#F4F1EA</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── More screens ─────────────────────────────────────── -->
+  <section class="ns-section">
+    <span class="ns-kicker">More from this flow</span>
+    <div class="ns-strip">
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/Reconciliation%20Center.png" alt="Dashboard" /></div><div class="lbl">Dashboard</div></div>
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/File%20reading%20stage.png" alt="Reconciling stepper" /></div><div class="lbl">Reconciling</div></div>
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/PNR%20table.png" alt="PNR details table" /></div><div class="lbl">PNR details</div></div>
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/Popup.png" alt="Escalate to redBus modal" /></div><div class="lbl">Escalate modal</div></div>
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/Escalations.png" alt="Escalations list" /></div><div class="lbl">Escalations</div></div>
+      <div class="ns-strip-item"><div class="ns-shot"><img src="assets/ota-reconciliation/Past%20reconciliations.png" alt="Past reconciliations" /></div><div class="lbl">History</div></div>
+    </div>
+  </section>
+
+  <!-- ── Close ────────────────────────────────────────────── -->
+  <div class="ns-close">
+    <span class="ns-kicker">Next</span>
+    <h2 class="ns-close-title"><a href="hubbleui.html">HubbleUI Design System →</a></h2>
+  </div>
+
+  <footer class="ns-footer">
+    <span>© 2026 Swaraj Kumar</span>
+    <div class="ns-footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../work.html">Work</a>
+    </div>
+    <span>Bangalore, India</span>
+  </footer>
+
+  <!-- ── Image lightbox ───────────────────────────────────── -->
+  <div class="ns-lightbox" id="ns-lightbox">
+    <button class="ns-lightbox-close" id="ns-lightbox-close" aria-label="Close">&times;</button>
+    <div class="ns-lightbox-inner">
+      <img id="ns-lightbox-img" src="" alt="" />
+      <div class="ns-lightbox-caption" id="ns-lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="../js/case-study.js?v=2"></script>
+</body>
+</html>

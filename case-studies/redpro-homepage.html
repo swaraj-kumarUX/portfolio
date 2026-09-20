@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>redPro Homepage Dashboard — Swaraj Kumar</title>
+  <meta name="description" content="Turning a wall of metrics into a homepage that tells bus operators what needs attention today — and what to do about it. A heuristic audit, a triage-first bet, and an explainable recommendation matrix for redPro v3." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
+  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+</head>
+<body>
+
+  <nav class="ns-nav">
+    <a class="ns-brand" href="../index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
+    <div class="ns-nav-links">
+      <a href="../work.html" class="active">Work</a>
+      <a href="../index.html#about">About</a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <header class="ns-hero">
+    <span class="ns-eyebrow">Case study · redBus / redPro v3 · RPW</span>
+    <div class="ns-hero-grid">
+      <div>
+        <h1 class="ns-title">redPro Homepage Dashboard</h1>
+        <p class="ns-dek">The old dashboard was a wall of metrics — operators could read a hundred numbers but not tell which service was in trouble, or what to do about it. I turned it into a to-do list.</p>
+      </div>
+    </div>
+
+    <div class="ns-meta">
+      <div class="ns-meta-item"><span class="ns-meta-label">Role</span><span class="ns-meta-val">Senior UX Designer, end-to-end</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Team</span><span class="ns-meta-val">Product · Data Science · Engineering · Growth teams</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Surface</span><span class="ns-meta-val">Operator home dashboard · redPro v3</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Users</span><span class="ns-meta-val">Bus operators</span></div>
+      <div class="ns-meta-item"><span class="ns-meta-label">Status</span><span class="ns-meta-val">Shipped · 2025</span></div>
+    </div>
+
+    <div class="ns-hero-art" aria-hidden="true">
+      <svg viewBox="0 0 240 200" fill="none">
+        <circle cx="80" cy="100" r="62" stroke="rgba(255,255,255,0.08)" stroke-width="26"/>
+        <circle cx="80" cy="100" r="62" stroke="#5FA8E0" stroke-width="26" stroke-dasharray="160 390" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#E0625A" stroke-width="26" stroke-dasharray="90 390" stroke-dashoffset="-160" stroke-linecap="round"/>
+        <circle cx="80" cy="100" r="62" stroke="#35C2AC" stroke-width="26" stroke-dasharray="60 390" stroke-dashoffset="-250" stroke-linecap="round"/>
+        <circle cx="176" cy="60" r="30" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
+        <circle cx="176" cy="60" r="30" stroke="#E8A33D" stroke-width="14" stroke-dasharray="70 188" stroke-linecap="round"/>
+        <circle cx="196" cy="150" r="18" stroke="rgba(255,255,255,0.08)" stroke-width="9"/>
+        <circle cx="196" cy="150" r="18" stroke="#5FA8E0" stroke-width="9" stroke-dasharray="35 113" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ── Headline outcome ─────────────────────────────────── -->
+  <section class="ns-section tight">
+    <div class="ns-grid4">
+      <div class="ns-tile"><div class="ns-tile-num">1 tap</div><h4>Problem to fix</h4><p>From spotting an at-risk service to a pre-filled fix — pricing, ads, ratings, all on the homepage.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">3–5</div><h4>Services triaged on landing</h4><p>At-risk services surfaced and ranked the moment an operator lands — no scanning required.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">4 → 1</div><h4>Growth products unified</h4><p>redDeal, Sponsored Ads, Rise and revMax — four products that used to live apart, now on one surface.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Snapshot image ───────────────────────────────────── -->
+  <section class="ns-section tight">
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/redpro-homepage/homepage.png" alt="Redesigned RPW operator homepage — today's sales, a services-that-need-attention tracker with recommendations, a performance chart, and a For You section" /></div>
+      <figcaption>The revamped homepage — a priority tracker up top, recommendations that lead straight to action, a performance trend, and a reorganised "For You" shelf at the bottom.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ── Context & problem ────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Context</span><h2 class="ns-h2">Plenty of data, no direction</h2></div>
+      <div class="ns-copy">
+        <p>The RPW homepage is where every bus operator on redPro starts their day. But it showed them everything at once and prioritised nothing — while the levers that could actually grow their business sat on other pages entirely. Four questions went unanswered.</p>
+      </div>
+    </div>
+
+    <div class="ns-grid4">
+      <div class="ns-tile"><h4>Which service needs me today?</h4><p>Nothing ranked or flagged the departures at risk — operators had to scan and infer.</p></div>
+      <div class="ns-tile"><h4>Is this number good or bad?</h4><p>No competitor benchmark meant an occupancy figure carried no context.</p></div>
+      <div class="ns-tile"><h4>So what do I do?</h4><p>Even when a problem was visible, the levers to fix it — pricing, ads, ratings — lived on other pages entirely.</p></div>
+      <div class="ns-tile"><h4>What's worth my attention?</h4><p>Long-running shelves and promos competed with urgent, time-sensitive decisions for the same space.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Heuristic audit ──────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">The starting point</span><h2 class="ns-h2">A heuristic audit of the live dashboard</h2></div>
+      <div class="ns-copy">
+        <p>Before redesigning, I ran a heuristic evaluation of the live dashboard against Nielsen's 10. It wasn't missing data — it was missing hierarchy, context and a path to action. Promotions sat above operations, internal jargon leaked into the UI, and "what needs me now" was scattered between an inline feed and a separate Action centre.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure">
+      <div class="ns-shot"><img src="assets/redpro-homepage/existing-dashboard.png" alt="The existing RPW operator dashboard before the revamp — today's sales, a For You promo row, customer feedback blocks, and a separate Action centre panel" /></div>
+      <figcaption>The existing dashboard — every section competing for the same attention, with promotional cards ("For You") occupying prime space above the operator's actual performance.</figcaption>
+    </figure>
+
+    <table class="ns-table">
+      <thead><tr><th>Heuristic breached</th><th>Severity</th><th>Finding</th></tr></thead>
+      <tbody>
+        <tr><td>Aesthetic &amp; minimalist design</td><td>High</td><td>Everything weighs the same — sales, feedback, promos and the Action centre compete equally, no hierarchy tells the operator where to look first.</td></tr>
+        <tr><td>Match with the real world</td><td>High</td><td>Internal jargon leaks through: "No lat/long available for 77 BPs &amp; 30 DPs," "270 PAX impacted," "DBD."</td></tr>
+        <tr><td>Recognition over recall</td><td>High</td><td>Numbers without a benchmark — 148 seats, ₹2,21,972 revenue, a 3.5 rating — nothing says whether that's good or bad.</td></tr>
+        <tr><td>Visibility of system status</td><td>High</td><td>Priority hidden between a collapsible Action centre (57% completed) and inline blocks — the day's most urgent service is never surfaced at a glance.</td></tr>
+        <tr><td>Consistency &amp; standards</td><td>Medium</td><td>Six different ways to say "act": Take Action, View List, READ, More Details, See Benefits, Start Now.</td></tr>
+        <tr><td>Flexibility &amp; efficiency of use</td><td>Medium</td><td>No bridge from insight to action — the fix lives on another page entirely.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="ns-row" style="margin-top:36px;">
+      <div></div>
+      <div class="ns-copy"><p>Each finding became a design goal: impose hierarchy, speak the operator's language, benchmark every metric, surface the day's priority first, unify the action vocabulary, and put the fix one tap from the problem.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Role & scope ─────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Role &amp; scope</span><h2 class="ns-h2">What I owned</h2></div>
+      <div class="ns-copy">
+        <p>I led the homepage end-to-end — the audit, the triage-first bet, the recommendation logic and the final UI — working closely with product, data science and engineering to keep every recommendation explainable and buildable.</p>
+        <div class="ns-pairlist">
+          <div>
+            <div class="ns-pl-label">Mine, end-to-end</div>
+            <p>Heuristic audit of the live dashboard · the triage-first structure and occupancy × rank recommendation matrix · all layout and hierarchy · the "For You" reorganisation · recommendation-card patterns, contributed to redPro v3's system.</p>
+          </div>
+          <div>
+            <div class="ns-pl-label">Partnered with</div>
+            <p><strong>Product</strong> — feature prioritisation, business goals. <strong>Data science</strong> — occupancy buckets, SRP-rank logic, projections. <strong>Engineering</strong> — HubbleUI feasibility, the 4-hour data reality. <strong>Growth teams</strong> — Rise, revMax, Sponsored Ads &amp; redDeal owners.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Discovery ────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Discovery</span><h2 class="ns-h2">Three reads that set the direction</h2></div>
+      <div class="ns-copy">
+        <p>From stakeholder feedback and three months of intervention data, three findings did the real steering.</p>
+      </div>
+    </div>
+
+    <div class="ns-beats">
+      <div class="ns-beat">
+        <div class="ns-beat-num">01</div>
+        <div>
+          <h4>Timing</h4>
+          <p>At any moment, an operator cares most about services departing today (DBD 0) and tomorrow (DBD 1) — not last month's averages. This anchored the whole page on a two-tab, today-first tracker.</p>
+        </div>
+      </div>
+      <div class="ns-beat">
+        <div class="ns-beat-num">02</div>
+        <div>
+          <h4>Mental model</h4>
+          <p>Operators triage by the service at risk, ranked worst-first — they don't read a dashboard top to bottom. Services got ranked by lowest occupancy; everything healthy got demoted.</p>
+        </div>
+      </div>
+      <div class="ns-beat">
+        <div class="ns-beat-num">03</div>
+        <div>
+          <h4>Context &amp; action</h4>
+          <p>A metric with no benchmark and no next step is noise. Operators wanted "is this good or bad — and what do I do?" Every diagnosis got paired with a benchmark and a recommended fix.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-grid4" style="margin-top:8px;">
+      <div class="ns-tile"><div class="ns-tile-num">≤ 50%</div><h4>Low — at risk</h4><p>Surfaced first, with the strongest recommendations.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">50–80%</div><h4>Medium — watch</h4><p>Room to push occupancy and SRP rank.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">&gt; 80%</div><h4>High — healthy</h4><p>Protect the price. No nudge needed.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Framing & strategy ───────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Strategy</span><h2 class="ns-h2">The bet: don't show more — show what to do</h2></div>
+      <div class="ns-copy">
+        <p>The brief read like a data gap — build operators a richer dashboard. It wasn't. It was a hierarchy and action gap: operators needed the few services that need action surfaced first, in their language, each with a fix one tap away.</p>
+      </div>
+    </div>
+
+    <div class="ns-callout">
+      <div class="ns-callout-label">The reframe</div>
+      <p><strong>Obvious read:</strong> show every metric we have and let operators find what matters. <strong>The bet I made:</strong> surface only the at-risk services, benchmarked, each with one recommended fix. Demote everything else — promos included.</p>
+    </div>
+
+    <div class="ns-grid4" style="margin-top:24px;">
+      <div class="ns-tile"><div class="ns-tile-num">01</div><h4>Lead with what's wrong</h4><p>Triage before overview — the first thing on screen is the service that needs action today.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">02</div><h4>Never a number alone</h4><p>Every metric ships with a competitor benchmark. Context is the product, not the raw value.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">03</div><h4>Every problem, a fix</h4><p>A flag without an explainable, recommended action is just anxiety — pair each with a next step.</p></div>
+      <div class="ns-tile"><div class="ns-tile-num">04</div><h4>Urgent over evergreen</h4><p>Time-sensitive decisions earn the top; promos and shelves move below the fold.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Explorations & tradeoffs ─────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Explorations</span><h2 class="ns-h2">How the recommendations get decided</h2></div>
+      <div class="ns-copy">
+        <p>I chose a rules-based, explainable matrix over a generic "recommended for you" feed — because operators only trust a nudge they can see the reason for.</p>
+      </div>
+    </div>
+
+    <div class="ns-concepts" style="grid-template-columns:repeat(3,1fr);">
+      <div class="ns-concept">
+        <div class="ns-concept-body">
+          <div class="ns-concept-label">Option A — Rejected</div>
+          <h4>Show everything</h4>
+          <p>Bet: more metrics, more control for power users. Why not: the status quo — no hierarchy, no action. The very problem we started with.</p>
+        </div>
+      </div>
+      <div class="ns-concept">
+        <div class="ns-concept-body">
+          <div class="ns-concept-label">Option B — Rejected</div>
+          <h4>Generic "for you" feed</h4>
+          <p>Bet: a black-box model ranks what to promote. Why not: unexplainable — operators can't see why they're being sold something, and trust erodes fast.</p>
+        </div>
+      </div>
+      <div class="ns-concept selected">
+        <div class="ns-concept-badge">✓ Selected</div>
+        <div class="ns-concept-body">
+          <div class="ns-concept-label">Option C — Chosen</div>
+          <h4>Rules matrix</h4>
+          <p>Bet: recommendations tied to two readable axes. Result: every card is explainable from the data on screen — occupancy × search rank.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-row" style="margin-top:44px;">
+      <div><span class="ns-kicker">The matrix</span></div>
+      <div class="ns-copy"><p>Occupancy × SRP rank (search visibility) — every recommendation traces back to one of four cases.</p></div>
+    </div>
+
+    <table class="ns-table">
+      <thead><tr><th>Occupancy \ SRP rank</th><th>Low visibility</th><th>High visibility</th></tr></thead>
+      <tbody>
+        <tr><td>Low occupancy</td><td><strong>Case 1 · empty &amp; unseen</strong> — Fill seats &amp; get found: redDeal, Sponsored Ads, Rise</td><td><strong>Case 2 · empty but visible</strong> — Win on price: redDeal, revMax</td></tr>
+        <tr><td>High occupancy</td><td><strong>Case 3 · full but unseen</strong> — Buy visibility: Sponsored Ads</td><td><strong>Case 4 · full &amp; visible</strong> — Good performance, no action needed</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Solution ──────────────────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Solution</span><h2 class="ns-h2">Each part answers one operator question</h2></div>
+      <div class="ns-copy">
+        <p>Not a screen gallery — every part earns its place by resolving a question operators actually ask. The worst-performing departure is always the first thing they see.</p>
+      </div>
+    </div>
+
+    <figure class="ns-figure medium">
+      <div class="ns-shot"><img src="assets/redpro-homepage/tracker.png" alt="Services that need attention — ranked service list, a benchmarked service-detail panel, and context-aware recommendation cards" /></div>
+      <figcaption>"Services that need attention" — ranked by occupancy, diagnosed against competitors, and paired with recommendations that carry their own projected upside.</figcaption>
+    </figure>
+
+    <div class="ns-beats">
+      <div class="ns-beat">
+        <div class="ns-beat-num">01</div>
+        <div>
+          <h4>"Which service needs me today?" — The DBD 0/1 tracker leads</h4>
+          <p>Two tabs (today and tomorrow) with services ranked worst-occupancy first. The at-risk departure is the first thing an operator sees, before any promo or shelf.</p>
+        </div>
+      </div>
+      <div class="ns-beat">
+        <div class="ns-beat-num">02</div>
+        <div>
+          <h4>"Is this good or bad?" — Benchmarked, not raw</h4>
+          <p>Each service is diagnosed against competitors — occupancy, selling-price range, SRP-rank bucket and rating — with a single "compare with competitors" path.</p>
+        </div>
+      </div>
+      <div class="ns-beat">
+        <div class="ns-beat-num">03</div>
+        <div>
+          <h4>"So what do I do?" — A recommended fix, with its upside</h4>
+          <p>Every flag carries one recommended action from the matrix, stating its projected upside before the operator commits — "up to 50 ranks," a 15% discount, 45 sponsored days — pre-filled, never recommending what's already configured.</p>
+        </div>
+      </div>
+      <div class="ns-beat">
+        <div class="ns-beat-num">04</div>
+        <div>
+          <h4>"What's worth my attention?" — Urgent on top, "For You" below</h4>
+          <p>Time-sensitive decisions earn the top; a performance trend lets operators zoom out; the "For You" shelf moves to the bottom, present but never competing with the day's priorities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ns-callout">
+      <div class="ns-callout-label">Four levers, one home</div>
+      <p>redDeal, Sponsored Ads, Rise and revMax — four growth products that used to live apart, now surfaced exactly when a service's data calls for them. The homepage becomes an activation surface, not just a report.</p>
+    </div>
+  </section>
+
+  <!-- ── Validation & impact ──────────────────────────────── -->
+  <section class="ns-section">
+    <div class="ns-row">
+      <div><span class="ns-kicker">Validation</span><h2 class="ns-h2">From reporting to acting</h2></div>
+      <div class="ns-copy">
+        <p>The redesign reshapes what the homepage is for — and what it's built to move. Every recommendation traces back to a heuristic it fixes, so the argument holds before a single metric lands.</p>
+        <p>The homepage becomes the front door for monetisation products — surfacing Rise and revMax lead-gen exactly when a service's data makes the case. Benchmarked diagnosis turns raw metrics into decisions an operator can actually act on. It's designed against clear north-star metrics — engagement with recommendations, action-completion rate, and product activations — tracked post-launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Reflection ───────────────────────────────────────── -->
+  <div class="ns-pullquote">
+    <p>The win wasn't new data — it was choosing a single organising question, "what needs me today?", and letting it demote everything that didn't answer it.</p>
+    <cite>The core move: editing, not adding</cite>
+  </div>
+
+  <section class="ns-section tight">
+    <div class="ns-row">
+      <div></div>
+      <div class="ns-copy">
+        <p><strong>The hardest part:</strong> designing the recommendation matrix so it never felt arbitrary. Every card had to be explainable — tied to occupancy and rank — and had to carry an honest projection, or operators would stop trusting it.</p>
+        <p><strong>What's next:</strong> closing the loop — showing operators the realised impact after they act on a recommendation, so the homepage learns to earn the next tap.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Close ────────────────────────────────────────────── -->
+  <div class="ns-close">
+    <span class="ns-kicker">Next</span>
+    <h2 class="ns-close-title"><a href="../work.html">Back to all work →</a></h2>
+  </div>
+
+  <footer class="ns-footer">
+    <span>© 2026 Swaraj Kumar</span>
+    <div class="ns-footer-links">
+      <a href="../index.html">Home</a>
+      <a href="../work.html">Work</a>
+    </div>
+    <span>Bangalore, India</span>
+  </footer>
+
+  <!-- ── Image lightbox ───────────────────────────────────── -->
+  <div class="ns-lightbox" id="ns-lightbox">
+    <button class="ns-lightbox-close" id="ns-lightbox-close" aria-label="Close">&times;</button>
+    <div class="ns-lightbox-inner">
+      <img id="ns-lightbox-img" src="" alt="" />
+      <div class="ns-lightbox-caption" id="ns-lightbox-caption"></div>
+    </div>
+  </div>
+
+  <script src="../js/case-study.js?v=2"></script>
+</body>
+</html>
