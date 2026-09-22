@@ -26,7 +26,7 @@ Typography is Inter throughout, at three weights — Medium 500, SemiBold 600 an
 Bold 700.
 
 The background is a single document-wide layer (`.hp-bg`) rather than
-per-section backgrounds, so the 62px lattice stays continuous across section
+per-section backgrounds, so the texture stays continuous across section
 boundaries. `js/bgfx.js` upgrades it to a canvas that scatters cells away from
 the pointer; it bails out entirely on touch devices and under
 `prefers-reduced-motion`, falling back to the static CSS texture.

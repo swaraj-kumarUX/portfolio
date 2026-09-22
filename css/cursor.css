@@ -1,0 +1,56 @@
+/* ── Circular cursor — shared by both design systems ──────────────────────
+   Driven by js/bgfx.js, which adds html.js-cursor only once the replacement
+   is on screen (and never on touch / reduced-motion), so a script failure
+   can't leave anyone without a pointer.
+
+   Themed through custom properties. The fallbacks are the light theme;
+   the dark case studies override them in case-study.css :root.
+     --cursor-ring        ring stroke
+     --cursor-ring-over   ring stroke over something clickable
+     --cursor-fill        ring fill
+     --cursor-fill-over   ring fill over something clickable
+     --cursor-glow        "r,g,b" of the soft pool behind the ring
+     --cursor-glow-opacity  0 turns the pool off entirely
+     --cursor-blend       mix-blend-mode for the whole cursor               */
+
+html.js-cursor, html.js-cursor * { cursor: none; }
+
+.hp-cursor {
+  position: fixed; top: 0; left: 0; z-index: 9999;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+  mix-blend-mode: var(--cursor-blend, normal);
+}
+.hp-cursor .glow,
+.hp-cursor .ring {
+  position: absolute; top: 0; left: 0; border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hp-cursor .glow {
+  opacity: var(--cursor-glow-opacity, 1);
+  width: 78px; height: 78px;
+  background: radial-gradient(circle,
+    rgba(var(--cursor-glow, 232,163,61), 0.24) 0%,
+    rgba(var(--cursor-glow, 232,163,61), 0.10) 45%, transparent 70%);
+}
+.hp-cursor .ring {
+  width: 26px; height: 26px;
+  border: 1.5px solid var(--cursor-ring, rgba(21,23,28,0.55));
+  background: var(--cursor-fill, rgba(255,253,248,0.10));
+}
+.hp-cursor.is-over .glow {
+  width: 112px; height: 112px;
+  background: radial-gradient(circle,
+    rgba(var(--cursor-glow, 232,163,61), 0.32) 0%,
+    rgba(var(--cursor-glow, 232,163,61), 0.14) 45%, transparent 70%);
+}
+.hp-cursor.is-over .ring {
+  width: 46px; height: 46px;
+  border-color: var(--cursor-ring-over, rgba(21,23,28,0.75));
+  background: var(--cursor-fill-over, rgba(255,253,248,0.16));
+}

@@ -1,4 +1,7 @@
 /* ── Background FX — cursor-reactive grid + circular cursor ───────────────
+   Runs on every page. The circular cursor is always on; the grid canvas
+   only starts on pages that have the .hp-bg layer (the light pages), so the
+   dark case studies get the cursor without a grid they never had.
    Progressive enhancement. Bails out entirely (leaving the static CSS
    texture and the native arrow cursor) when the device has no fine pointer
    or the visitor asked for reduced motion. The native cursor is only hidden
@@ -27,15 +30,20 @@
   var PUSH = 86;     // peak displacement, px — must exceed CELL so cells
                      // genuinely clear the pointer rather than just swell
 
-  /* ── canvas ── */
-  var cv = document.createElement('canvas');
-  cv.className = 'hp-bg-canvas';
-  cv.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(cv);
-  var ctx = cv.getContext('2d');
+  /* ── canvas (light pages only) ── */
+  var hasGrid = !!document.querySelector('.hp-bg');
+  var cv = null, ctx = null;
+  if (hasGrid) {
+    cv = document.createElement('canvas');
+    cv.className = 'hp-bg-canvas';
+    cv.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(cv);
+    ctx = cv.getContext('2d');
+  }
   var dpr = 1, vw = 0, vh = 0;
 
   function resize() {
+    if (!hasGrid) return;
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     vw = window.innerWidth; vh = window.innerHeight;
     cv.width = Math.round(vw * dpr); cv.height = Math.round(vh * dpr);
@@ -51,6 +59,8 @@
   cur.innerHTML = '<span class="glow"></span><span class="ring"></span>';
   document.body.appendChild(cur);
 
+  var HOT = 'a,button,.ns-shot img,.ns-research-photo img,.ns-strip-item img,.ns-concept-shot img,.ns-lightbox.open';
+
   var mx = -9999, my = -9999;          // raw pointer
   var sx = -9999, sy = -9999;          // smoothed, drives the field + ring
   var inside = false, over = false;
@@ -58,7 +68,9 @@
   document.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
     if (!inside) { sx = mx; sy = my; inside = true; }   // no swoop on entry
-    over = !!(e.target && e.target.closest && e.target.closest('a,button'));
+    // anything clickable grows the ring — including the case-study screenshots,
+    // which open a lightbox and used to signal that with a native zoom-in cursor
+    over = !!(e.target && e.target.closest && e.target.closest(HOT));
   }, { passive: true });
 
   document.addEventListener('mouseleave', function () { inside = false; mx = my = -9999; }, { passive: true });
@@ -123,25 +135,7 @@
 
     var scrollY = window.scrollY || 0;
     scrollX_ = window.scrollX || 0;
-    ctx.clearRect(0, 0, vw, vh);
-
-    // static 62px lattice
-    ctx.fillStyle = 'rgba(199,150,62,0.17)';
-    var gx = -(((scrollX_) % CELL) + CELL) % CELL;
-    for (var x = gx; x < vw; x += CELL) ctx.fillRect(Math.round(x), 0, 1, vh);
-    var gy = -(((scrollY) % CELL) + CELL) % CELL;
-    for (var y = gy; y < vh; y += CELL) ctx.fillRect(0, Math.round(y), vw, 1);
-
-    // the cell the cursor is in, gently lit
-    if (inside) {
-      var cxc = Math.floor((sx + scrollX_) / CELL) * CELL - scrollX_;
-      var cyc = Math.floor((sy + scrollY) / CELL) * CELL - scrollY;
-      ctx.fillStyle = 'rgba(232,163,61,0.06)';
-      ctx.fillRect(cxc, cyc, CELL, CELL);
-    }
-
-    drawTile(TILE_A, scrollY);
-    drawTile(TILE_B, scrollY);
+    if (hasGrid) drawGrid(scrollY);
 
     // cursor
     if (inside) {
@@ -155,7 +149,24 @@
     requestAnimationFrame(frame);
   }
 
-  root.classList.add('js-bgfx');    // swaps the CSS texture out for the canvas
+  function drawGrid(scrollY) {
+    ctx.clearRect(0, 0, vw, vh);
+
+    // (no lattice lines — removed 2026-09-22; the squares carry the texture alone)
+
+    // the cell the cursor is in, gently lit
+    if (inside) {
+      var cxc = Math.floor((sx + scrollX_) / CELL) * CELL - scrollX_;
+      var cyc = Math.floor((sy + scrollY) / CELL) * CELL - scrollY;
+      ctx.fillStyle = 'rgba(232,163,61,0.06)';
+      ctx.fillRect(cxc, cyc, CELL, CELL);
+    }
+
+    drawTile(TILE_A, scrollY);
+    drawTile(TILE_B, scrollY);
+  }
+
+  if (hasGrid) root.classList.add('js-bgfx');   // swaps the CSS texture out for the canvas
   root.classList.add('js-cursor');  // only now is the native arrow hidden
   requestAnimationFrame(frame);
 })();

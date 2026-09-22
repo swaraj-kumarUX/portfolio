@@ -3,21 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OTA Reconciliation — Swaraj Kumar</title>
+  <title>Invoice reconciliation tool — Swaraj Kumar</title>
   <meta name="description" content="Redesigning how bus operators reconcile OTA payments at redBus — from two in-person field interviews to a tested, chart-led summary screen." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="../css/case-study.css?v=3" />
+  <link rel="stylesheet" href="../css/case-study.css?v=1790995200" />
+  <link rel="stylesheet" href="../css/cursor.css?v=1790995200" />
 </head>
 <body>
 
   <nav class="ns-nav">
     <a class="ns-brand" href="../index.html">Swaraj Kumar<span>Senior UX Designer</span></a>
     <div class="ns-nav-links">
-      <a href="../work.html" class="active">Work</a>
+      <a class="active" href="../work.html">Work</a>
       <a href="../index.html#about">About</a>
+      <a href="../Swaraj-Kumar-Resume.pdf" target="_blank" rel="noopener">Résumé<span class="sr-only"> (opens in new tab)</span></a>
     </div>
+    <a class="ns-nav-cta" href="https://www.linkedin.com/in/swaraj-k/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
   </nav>
 
   <!-- ── Hero ─────────────────────────────────────────────── -->
@@ -25,7 +28,7 @@
     <span class="ns-eyebrow">Case study · redBus / Bitla</span>
     <div class="ns-hero-grid">
       <div>
-        <h1 class="ns-title">OTA Reconciliation</h1>
+        <h1 class="ns-title">Invoice reconciliation tool</h1>
         <p class="ns-dek">Operators didn't need a cleaner table of mismatches — they needed to know whether a difference was worth their time. I redesigned the flow around that, tested two directions head-to-head with real operators, and shipped the one that made the "why" visible without a click.</p>
       </div>
     </div>
@@ -38,17 +41,10 @@
       <div class="ns-meta-item"><span class="ns-meta-label">Status</span><span class="ns-meta-val">Design-validated, pre-launch</span></div>
     </div>
 
-    <div class="ns-hero-art" aria-hidden="true">
-      <svg viewBox="0 0 240 200" fill="none">
-        <circle cx="80" cy="100" r="62" stroke="rgba(255,255,255,0.08)" stroke-width="26"/>
-        <circle cx="80" cy="100" r="62" stroke="#5FA8E0" stroke-width="26" stroke-dasharray="152 390" stroke-linecap="round"/>
-        <circle cx="80" cy="100" r="62" stroke="#35C2AC" stroke-width="26" stroke-dasharray="70 390" stroke-dashoffset="-152" stroke-linecap="round"/>
-        <circle cx="80" cy="100" r="62" stroke="#E8A33D" stroke-width="26" stroke-dasharray="40 390" stroke-dashoffset="-222" stroke-linecap="round"/>
-        <circle cx="176" cy="60" r="30" stroke="rgba(255,255,255,0.08)" stroke-width="14"/>
-        <circle cx="176" cy="60" r="30" stroke="#35C2AC" stroke-width="14" stroke-dasharray="60 188" stroke-linecap="round"/>
-        <circle cx="196" cy="150" r="18" stroke="rgba(255,255,255,0.08)" stroke-width="9"/>
-        <circle cx="196" cy="150" r="18" stroke="#5FA8E0" stroke-width="9" stroke-dasharray="30 113" stroke-linecap="round"/>
-      </svg>
+    <div class="ns-hero-art is-shots">
+      <img class="shot-main" src="assets/ota-reconciliation/Reconciliation%20report.png" width="1440" height="1521" alt="Reconciliation summary: a ₹30,250 difference, 33 mismatched PNRs out of 1,284, and donut breakdowns of the invoice and the difference" />
+      <img class="shot-pop" src="assets/ota-reconciliation/Popup.png" width="650" height="648" alt="Escalate discrepancies to redBus dialog, pre-filled with both issue categories and the net difference" />
+      <span class="shot-tag" aria-hidden="true">From finding to escalation in one step</span>
     </div>
   </header>
 
@@ -269,22 +265,6 @@
     </figure>
   </section>
 
-  <!-- ── Scope & constraints ──────────────────────────────── -->
-  <section class="ns-section">
-    <div class="ns-row">
-      <div><span class="ns-kicker">Honesty</span><h2 class="ns-h2">What I didn't build</h2></div>
-      <div class="ns-copy">
-        <p>Real scope, stated plainly rather than smoothed over:</p>
-      </div>
-    </div>
-    <div class="ns-grid4">
-      <div class="ns-tile"><h4>Placeholder accordions</h4><p>"Escalated PNRs" and "Invoice Deductions" show correct counts with only one category fully wired to real row data.</p></div>
-      <div class="ns-tile"><h4>SLA-nudge, unresolved</h4><p>What happens when an OTA doesn't respond in time was left explicitly open rather than guessed at.</p></div>
-      <div class="ns-tile"><h4>IA feedback, flagged not fixed</h4><p>Seabird's note that the app "has too many tabs" is an app-level signal above what one module can fix alone.</p></div>
-      <div class="ns-tile"><h4>Pre-launch</h4><p>Validated against real operator comprehension and behavior before a line of production code — not yet measured live.</p></div>
-    </div>
-  </section>
-
   <!-- ── Visual language ──────────────────────────────────── -->
   <section class="ns-section">
     <div class="ns-row">
@@ -339,5 +319,6 @@
   </div>
 
   <script src="../js/case-study.js?v=2"></script>
+  <script src="../js/bgfx.js?v=1790822400"></script>
 </body>
 </html>

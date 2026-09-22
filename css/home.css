@@ -95,7 +95,7 @@ html.js-reveal .hp-fade.in { opacity: 1; transform: translateY(0); }
 .hp-hero-glyph { width: 40px; height: 40px; margin-bottom: 22px; }
 .hp-hero-glyph svg { width: 100%; height: 100%; }
 
-.hp-hero-kicker { font-family: var(--sans); font-size: 15px; color: var(--mut); margin-bottom: 18px; }
+.hp-hero-kicker { font-family: var(--sans); font-size: 19.5px;   /* 15px +30% */ color: var(--mut); margin-bottom: 18px; }
 
 .hp-hero-name {
   font-family: var(--serif); font-weight: 500; font-style: normal;
@@ -135,7 +135,7 @@ html.js-reveal .hp-fade.in { opacity: 1; transform: translateY(0); }
 }
 /* ── ONE continuous page background ─────────────────────────
    Spans the whole document (absolute inset:0 against a relative
-   body) so the 62px lattice runs unbroken from nav to footer.
+   body) so the texture runs unbroken from nav to footer.
    Every section used to paint its OWN base + grid — three different
    base colours and a lattice that re-phased at each boundary. That
    is what produced the horizontal seams. Sections now contribute
@@ -167,50 +167,12 @@ html.js-reveal .hp-fade.in { opacity: 1; transform: translateY(0); }
    are gated behind classes the script adds only once it is running, so
    touch / no-JS / reduced-motion keep the static texture and the normal
    cursor — a JS failure can never leave someone without a pointer.  */
-html.js-bgfx .hp-bg-grid,
 html.js-bgfx .hp-bg-squares { display: none; }
 
 .hp-bg-canvas { position: fixed; inset: 0; z-index: -3; pointer-events: none; }
 
-html.js-cursor, html.js-cursor * { cursor: none; }
+/* circular cursor styles live in css/cursor.css (shared with the case studies) */
 
-.hp-cursor {
-  position: fixed; top: 0; left: 0; z-index: 9999;
-  pointer-events: none; opacity: 0;
-  transition: opacity 0.25s var(--ease);
-  will-change: transform;
-}
-.hp-cursor .glow,
-.hp-cursor .ring {
-  position: absolute; top: 0; left: 0; border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.28s var(--ease), height 0.28s var(--ease),
-              background 0.28s var(--ease), border-color 0.28s var(--ease);
-}
-.hp-cursor .glow {
-  width: 78px; height: 78px;
-  background: radial-gradient(circle, rgba(232,163,61,0.24) 0%, rgba(232,163,61,0.10) 45%, transparent 70%);
-}
-.hp-cursor .ring {
-  width: 26px; height: 26px;
-  border: 1.5px solid rgba(21,23,28,0.55);
-  background: rgba(255,253,248,0.10);
-}
-.hp-cursor.is-over .glow {
-  width: 112px; height: 112px;
-  background: radial-gradient(circle, rgba(232,163,61,0.32) 0%, rgba(232,163,61,0.14) 45%, transparent 70%);
-}
-.hp-cursor.is-over .ring {
-  width: 46px; height: 46px;
-  border-color: rgba(21,23,28,0.75); background: rgba(255,253,248,0.16);
-}
-
-/* crisp 62px grid lines — fixed cell size at any viewport */
-.hp-bg-grid {
-  background-image:
-    repeating-linear-gradient(to right, rgba(199,150,62,0.17) 0 1px, transparent 1px 62px),
-    repeating-linear-gradient(to bottom, rgba(199,150,62,0.17) 0 1px, transparent 1px 62px);
-}
 
 /* scattered filled squares — two offset tiles so the repeat never reads as a pattern */
 .hp-bg-squares {
@@ -450,7 +412,7 @@ html.js-cursor, html.js-cursor * { cursor: none; }
 }
 
 /* ── Get in touch ──────────────────────────────────────────── */
-.hp-cta { max-width: 1360px; margin: clamp(90px, 11vw, 150px) auto 0; padding: clamp(80px, 10vw, 140px) var(--pad); border-top: 1px solid var(--border); }
+.hp-cta { max-width: 1360px; margin: clamp(90px, 11vw, 150px) auto 0; padding: clamp(80px, 10vw, 140px) var(--pad); }
 .hp-cta-title { font-family: var(--display); font-weight: 700; font-size: clamp(46px, 9vw, 118px); line-height: 0.95; }
 .hp-cta-sub { margin-top: 24px; color: var(--mut); font-size: 16px; max-width: 56ch; line-height: 1.7; }
 .hp-cta-links { display: flex; gap: 18px 42px; flex-wrap: wrap; margin-top: 46px; }
