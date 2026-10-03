@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" />
-  <link rel="stylesheet" href="css/home.css?v=1791254400" />
-  <link rel="stylesheet" href="css/cursor.css?v=1790995200" />
+  <link rel="stylesheet" href="css/home.css?v=1791600000" />
+  <link rel="stylesheet" href="css/cursor.css?v=1791600000" />
 </head>
 <body>
 
@@ -44,7 +44,7 @@
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v10m0 0l-4-4m4 4l4-4M4 16h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Download resume
         </a>
-        <a class="hp-hero-secondary" href="#about">Why should you hire me?</a>
+        <a class="hp-hero-secondary" id="hp-video-open" href="assets/why-you-should-hire-me.mp4">Why should you hire me?</a>
       </div>
     </div>
 
@@ -198,7 +198,17 @@
     <span>Bangalore, India</span>
   </footer>
 
-  <script src="js/home.js?v=1790736000"></script>
-  <script src="js/bgfx.js?v=1791081600"></script>
+  <!-- ── "Why should you hire me?" video ──────────────────── -->
+  <div class="hp-video" id="hp-video" hidden>
+    <div class="hp-video-backdrop" data-close></div>
+    <div class="hp-video-box" role="dialog" aria-modal="true" aria-label="Why should you hire me — video">
+      <button class="hp-video-close" type="button" aria-label="Close video">&times;</button>
+      <video id="hp-video-el" preload="none" controls playsinline
+             src="assets/why-you-should-hire-me.mp4"></video>
+    </div>
+  </div>
+
+  <script src="js/home.js?v=1791600000"></script>
+  <script src="js/bgfx.js?v=1791600000"></script>
 </body>
 </html>

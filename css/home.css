@@ -552,3 +552,49 @@ a.hp-detail-value:hover .arrow { transform: translate(3px, -3px); }
 @media (max-width: 860px) {
   .hp-contact-grid { grid-template-columns: 1fr; }
 }
+
+/* ── "Why should you hire me?" video popup ────────────────────
+   The backdrop is a sibling of the box, so a click anywhere outside
+   the play area lands on it and closes — no coordinate maths, and no
+   risk of the video's own controls closing the dialog by bubbling. */
+.hp-video { position: fixed; inset: 0; z-index: 1200; display: flex; align-items: center; justify-content: center; padding: clamp(16px, 4vw, 48px); }
+.hp-video[hidden] { display: none; }
+.hp-video-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(16,14,10,0.74);
+  backdrop-filter: blur(6px);
+  animation: hp-video-fade 0.28s var(--ease) both;
+}
+/* The box hugs the video rather than forcing a width — this clip is
+   portrait (1080x1350), and a fixed-width box would pad it with black
+   bars that are inside the dialog but outside the picture, making
+   "click outside the play area" ambiguous. */
+.hp-video-box {
+  position: relative;
+  width: auto; max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,0.65);
+  animation: hp-video-rise 0.34s var(--ease) both;
+}
+.hp-video-box video {
+  display: block;
+  width: auto; height: auto;
+  max-width: 100%;
+  max-height: min(82vh, 900px);
+  border-radius: 16px; background: #000;
+}
+.hp-video-close {
+  position: absolute; top: -14px; right: -14px; z-index: 1;
+  width: 40px; height: 40px; border-radius: 50%; border: 0; cursor: pointer;
+  font-size: 22px; line-height: 1; color: var(--ink);
+  background: var(--bg);
+  box-shadow: 0 6px 18px -6px rgba(0,0,0,0.5);
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+.hp-video-close:hover { transform: scale(1.08); }
+@keyframes hp-video-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes hp-video-rise { from { opacity: 0; transform: translateY(16px) scale(0.985); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 620px) {
+  .hp-video-close { top: -10px; right: -6px; width: 36px; height: 36px; }
+}

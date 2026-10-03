@@ -49,3 +49,60 @@
       '&body='    + encodeURIComponent(body);
   });
 })();
+
+/* ── "Why should you hire me?" video popup ──────────────────
+   Progressive enhancement: the link points straight at the mp4, so
+   without JS it still opens. Closes on backdrop click, the close
+   button, or Escape; the video is paused and rewound on close so it
+   never keeps playing out of sight.                              */
+(function () {
+  var open = document.getElementById('hp-video-open');
+  var modal = document.getElementById('hp-video');
+  if (!open || !modal) return;
+
+  var video = modal.querySelector('#hp-video-el');
+  var closeBtn = modal.querySelector('.hp-video-close');
+  var lastFocused = null;
+
+  function show(e) {
+    if (e) e.preventDefault();
+    // Safari doesn't focus a link on click, so fall back to the trigger
+    lastFocused = (document.activeElement && document.activeElement !== document.body)
+      ? document.activeElement : open;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});   // autoplay blocked: controls are there
+  }
+
+  function hide() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    video.pause();
+    video.currentTime = 0;
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  open.addEventListener('click', show);
+  closeBtn.addEventListener('click', hide);
+
+  // anything outside the play area — the backdrop, or the padding around it
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal || e.target.hasAttribute('data-close')) hide();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) hide();
+  });
+
+  // keep focus inside the dialog while it is open
+  modal.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var items = [closeBtn, video];
+    var i = items.indexOf(document.activeElement);
+    e.preventDefault();
+    items[(i + (e.shiftKey ? items.length - 1 : 1)) % items.length].focus();
+  });
+})();
